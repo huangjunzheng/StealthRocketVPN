@@ -15,6 +15,10 @@ class HomeController: UIViewController {
     
     let connectView = HomeConnectView()
     
+    let download = HomeFlowView(direction: "Download", img: "home-download")
+    
+    let upload = HomeFlowView(direction: "Upload", img: "home-upload")
+    
     
 
     override func viewDidLoad() {
@@ -66,6 +70,24 @@ class HomeController: UIViewController {
             make.leading.equalTo(12)
             make.trailing.equalTo(-12)
             make.height.equalTo(76)
+        }
+        
+        view.addSubview(download)
+        download.snp.makeConstraints { make in
+            
+            make.top.equalTo(connectView.snp.bottom).offset(20)
+            make.leading.equalTo(12)
+            make.trailing.equalTo(view.snp.centerX).offset(-4)
+            make.height.equalTo(138)
+        }
+        
+        view.addSubview(upload)
+        upload.snp.makeConstraints { make in
+            
+            make.top.equalTo(connectView.snp.bottom).offset(20)
+            make.trailing.equalTo(-12)
+            make.leading.equalTo(view.snp.centerX).offset(4)
+            make.height.equalTo(138)
         }
     }
 }

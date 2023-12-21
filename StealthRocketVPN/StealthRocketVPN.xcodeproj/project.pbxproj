@@ -18,6 +18,7 @@
 		E5D51FDF2B34101F004FBB84 /* OpenAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FDE2B34101F004FBB84 /* OpenAdMob.swift */; };
 		E5D51FE22B34110F004FBB84 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E5D51FE12B34110F004FBB84 /* GoogleMobileAds */; };
 		E5D51FE42B3421E6004FBB84 /* HomeConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FE32B3421E6004FBB84 /* HomeConnectView.swift */; };
+		E5D51FE62B3441D0004FBB84 /* HomeFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FE52B3441D0004FBB84 /* HomeFlowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		E5D51FDB2B340A09004FBB84 /* ConstantFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantFile.swift; sourceTree = "<group>"; };
 		E5D51FDE2B34101F004FBB84 /* OpenAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAdMob.swift; sourceTree = "<group>"; };
 		E5D51FE32B3421E6004FBB84 /* HomeConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConnectView.swift; sourceTree = "<group>"; };
+		E5D51FE52B3441D0004FBB84 /* HomeFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			children = (
 				E5D51FD92B34094D004FBB84 /* HomeController.swift */,
 				E5D51FE32B3421E6004FBB84 /* HomeConnectView.swift */,
+				E5D51FE52B3441D0004FBB84 /* HomeFlowView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E5D51FDA2B34094D004FBB84 /* HomeController.swift in Sources */,
+				E5D51FE62B3441D0004FBB84 /* HomeFlowView.swift in Sources */,
 				E5D51FDF2B34101F004FBB84 /* OpenAdMob.swift in Sources */,
 				E5D51FD42B33DDAE004FBB84 /* OpenLodingController.swift in Sources */,
 				E5D51FD72B33E567004FBB84 /* ColorHex.swift in Sources */,
