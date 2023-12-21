@@ -7,23 +7,34 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CABEDD1A300C76E3C49D6E73 /* Pods_StealthRocketVPN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D7C8F9648DB3F2B327522B /* Pods_StealthRocketVPN.framework */; };
 		E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */; };
-		E5C0E3502B331DBC0060CF4F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0E34F2B331DBC0060CF4F /* SceneDelegate.swift */; };
-		E5C0E3522B331DBC0060CF4F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0E3512B331DBC0060CF4F /* ViewController.swift */; };
-		E5C0E3552B331DBC0060CF4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3532B331DBC0060CF4F /* Main.storyboard */; };
 		E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3562B331DBD0060CF4F /* Assets.xcassets */; };
 		E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */; };
+		E5D51FD42B33DDAE004FBB84 /* OpenLodingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FD32B33DDAE004FBB84 /* OpenLodingController.swift */; };
+		E5D51FD72B33E567004FBB84 /* ColorHex.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FD62B33E567004FBB84 /* ColorHex.swift */; };
+		E5D51FDA2B34094D004FBB84 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FD92B34094D004FBB84 /* HomeController.swift */; };
+		E5D51FDC2B340A09004FBB84 /* ConstantFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FDB2B340A09004FBB84 /* ConstantFile.swift */; };
+		E5D51FDF2B34101F004FBB84 /* OpenAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FDE2B34101F004FBB84 /* OpenAdMob.swift */; };
+		E5D51FE22B34110F004FBB84 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E5D51FE12B34110F004FBB84 /* GoogleMobileAds */; };
+		E5D51FE42B3421E6004FBB84 /* HomeConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FE32B3421E6004FBB84 /* HomeConnectView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		23D7C8F9648DB3F2B327522B /* Pods_StealthRocketVPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StealthRocketVPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		456432464CA216038A09C0AA /* Pods-StealthRocketVPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StealthRocketVPN.debug.xcconfig"; path = "Target Support Files/Pods-StealthRocketVPN/Pods-StealthRocketVPN.debug.xcconfig"; sourceTree = "<group>"; };
+		A4E5C9164D6DC120D9D2C967 /* Pods-StealthRocketVPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StealthRocketVPN.release.xcconfig"; path = "Target Support Files/Pods-StealthRocketVPN/Pods-StealthRocketVPN.release.xcconfig"; sourceTree = "<group>"; };
 		E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthRocketVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E5C0E34F2B331DBC0060CF4F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E5C0E3512B331DBC0060CF4F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E5C0E3542B331DBC0060CF4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E5C0E3562B331DBD0060CF4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E5C0E3592B331DBD0060CF4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5C0E35B2B331DBD0060CF4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E5D51FD32B33DDAE004FBB84 /* OpenLodingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenLodingController.swift; sourceTree = "<group>"; };
+		E5D51FD62B33E567004FBB84 /* ColorHex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHex.swift; sourceTree = "<group>"; };
+		E5D51FD92B34094D004FBB84 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		E5D51FDB2B340A09004FBB84 /* ConstantFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantFile.swift; sourceTree = "<group>"; };
+		E5D51FDE2B34101F004FBB84 /* OpenAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAdMob.swift; sourceTree = "<group>"; };
+		E5D51FE32B3421E6004FBB84 /* HomeConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConnectView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +42,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E5D51FE22B34110F004FBB84 /* GoogleMobileAds in Frameworks */,
+				CABEDD1A300C76E3C49D6E73 /* Pods_StealthRocketVPN.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E28FB32C6721700FBCADF75 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				456432464CA216038A09C0AA /* Pods-StealthRocketVPN.debug.xcconfig */,
+				A4E5C9164D6DC120D9D2C967 /* Pods-StealthRocketVPN.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		D0C493F9F24E7F3A8925A9E3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23D7C8F9648DB3F2B327522B /* Pods_StealthRocketVPN.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E5C0E3412B331DBC0060CF4F = {
 			isa = PBXGroup;
 			children = (
 				E5C0E34C2B331DBC0060CF4F /* StealthRocketVPN */,
 				E5C0E34B2B331DBC0060CF4F /* Products */,
+				2E28FB32C6721700FBCADF75 /* Pods */,
+				D0C493F9F24E7F3A8925A9E3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +88,50 @@
 		E5C0E34C2B331DBC0060CF4F /* StealthRocketVPN */ = {
 			isa = PBXGroup;
 			children = (
+				E5D51FDD2B340FBE004FBB84 /* Advertise */,
+				E5D51FD82B340924004FBB84 /* Home */,
+				E5D51FD52B33E52B004FBB84 /* Tools */,
+				E5D51FD22B33DAA8004FBB84 /* LaunchScreen */,
 				E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */,
-				E5C0E34F2B331DBC0060CF4F /* SceneDelegate.swift */,
-				E5C0E3512B331DBC0060CF4F /* ViewController.swift */,
-				E5C0E3532B331DBC0060CF4F /* Main.storyboard */,
 				E5C0E3562B331DBD0060CF4F /* Assets.xcassets */,
-				E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */,
 				E5C0E35B2B331DBD0060CF4F /* Info.plist */,
 			);
 			path = StealthRocketVPN;
+			sourceTree = "<group>";
+		};
+		E5D51FD22B33DAA8004FBB84 /* LaunchScreen */ = {
+			isa = PBXGroup;
+			children = (
+				E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */,
+				E5D51FD32B33DDAE004FBB84 /* OpenLodingController.swift */,
+			);
+			path = LaunchScreen;
+			sourceTree = "<group>";
+		};
+		E5D51FD52B33E52B004FBB84 /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				E5D51FD62B33E567004FBB84 /* ColorHex.swift */,
+				E5D51FDB2B340A09004FBB84 /* ConstantFile.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		E5D51FD82B340924004FBB84 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				E5D51FD92B34094D004FBB84 /* HomeController.swift */,
+				E5D51FE32B3421E6004FBB84 /* HomeConnectView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		E5D51FDD2B340FBE004FBB84 /* Advertise */ = {
+			isa = PBXGroup;
+			children = (
+				E5D51FDE2B34101F004FBB84 /* OpenAdMob.swift */,
+			);
+			path = Advertise;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,15 +141,20 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5C0E35E2B331DBD0060CF4F /* Build configuration list for PBXNativeTarget "StealthRocketVPN" */;
 			buildPhases = (
+				6FBBAF971AC9A204ED304F87 /* [CP] Check Pods Manifest.lock */,
 				E5C0E3462B331DBC0060CF4F /* Sources */,
 				E5C0E3472B331DBC0060CF4F /* Frameworks */,
 				E5C0E3482B331DBC0060CF4F /* Resources */,
+				EC47B60D921B24F51463CADA /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = StealthRocketVPN;
+			packageProductDependencies = (
+				E5D51FE12B34110F004FBB84 /* GoogleMobileAds */,
+			);
 			productName = StealthRocketVPN;
 			productReference = E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +183,9 @@
 				Base,
 			);
 			mainGroup = E5C0E3412B331DBC0060CF4F;
+			packageReferences = (
+				E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+			);
 			productRefGroup = E5C0E34B2B331DBC0060CF4F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,34 +202,71 @@
 			files = (
 				E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */,
 				E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */,
-				E5C0E3552B331DBC0060CF4F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6FBBAF971AC9A204ED304F87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StealthRocketVPN-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC47B60D921B24F51463CADA /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StealthRocketVPN/Pods-StealthRocketVPN-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StealthRocketVPN/Pods-StealthRocketVPN-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StealthRocketVPN/Pods-StealthRocketVPN-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E5C0E3462B331DBC0060CF4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5C0E3522B331DBC0060CF4F /* ViewController.swift in Sources */,
+				E5D51FDA2B34094D004FBB84 /* HomeController.swift in Sources */,
+				E5D51FDF2B34101F004FBB84 /* OpenAdMob.swift in Sources */,
+				E5D51FD42B33DDAE004FBB84 /* OpenLodingController.swift in Sources */,
+				E5D51FD72B33E567004FBB84 /* ColorHex.swift in Sources */,
+				E5D51FDC2B340A09004FBB84 /* ConstantFile.swift in Sources */,
+				E5D51FE42B3421E6004FBB84 /* HomeConnectView.swift in Sources */,
 				E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */,
-				E5C0E3502B331DBC0060CF4F /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E5C0E3532B331DBC0060CF4F /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E5C0E3542B331DBC0060CF4F /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,19 +399,20 @@
 		};
 		E5C0E35F2B331DBD0060CF4F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 456432464CA216038A09C0AA /* Pods-StealthRocketVPN.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SCT3Z5ZYL6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthRocketVPN/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -319,19 +432,20 @@
 		};
 		E5C0E3602B331DBD0060CF4F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4E5C9164D6DC120D9D2C967 /* Pods-StealthRocketVPN.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SCT3Z5ZYL6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthRocketVPN/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -371,6 +485,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.14.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E5D51FE12B34110F004FBB84 /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E5C0E3422B331DBC0060CF4F /* Project object */;
 }
