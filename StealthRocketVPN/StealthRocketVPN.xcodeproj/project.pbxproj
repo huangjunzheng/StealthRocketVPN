@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CABEDD1A300C76E3C49D6E73 /* Pods_StealthRocketVPN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23D7C8F9648DB3F2B327522B /* Pods_StealthRocketVPN.framework */; };
+		E53E0B8C2B353250001E2529 /* ConnectStatusController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53E0B8B2B353250001E2529 /* ConnectStatusController.swift */; };
 		E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */; };
 		E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3562B331DBD0060CF4F /* Assets.xcassets */; };
 		E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */; };
@@ -19,12 +20,16 @@
 		E5D51FE22B34110F004FBB84 /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = E5D51FE12B34110F004FBB84 /* GoogleMobileAds */; };
 		E5D51FE42B3421E6004FBB84 /* HomeConnectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FE32B3421E6004FBB84 /* HomeConnectView.swift */; };
 		E5D51FE62B3441D0004FBB84 /* HomeFlowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FE52B3441D0004FBB84 /* HomeFlowView.swift */; };
+		E5D51FE92B345C74004FBB84 /* ServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FE82B345C74004FBB84 /* ServerController.swift */; };
+		E5D51FEB2B345FB0004FBB84 /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FEA2B345FB0004FBB84 /* ServerCell.swift */; };
+		E5D51FED2B3467F0004FBB84 /* HomeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FEC2B3467F0004FBB84 /* HomeSettingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		23D7C8F9648DB3F2B327522B /* Pods_StealthRocketVPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StealthRocketVPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		456432464CA216038A09C0AA /* Pods-StealthRocketVPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StealthRocketVPN.debug.xcconfig"; path = "Target Support Files/Pods-StealthRocketVPN/Pods-StealthRocketVPN.debug.xcconfig"; sourceTree = "<group>"; };
 		A4E5C9164D6DC120D9D2C967 /* Pods-StealthRocketVPN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StealthRocketVPN.release.xcconfig"; path = "Target Support Files/Pods-StealthRocketVPN/Pods-StealthRocketVPN.release.xcconfig"; sourceTree = "<group>"; };
+		E53E0B8B2B353250001E2529 /* ConnectStatusController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectStatusController.swift; sourceTree = "<group>"; };
 		E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthRocketVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5C0E3562B331DBD0060CF4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -37,6 +42,9 @@
 		E5D51FDE2B34101F004FBB84 /* OpenAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAdMob.swift; sourceTree = "<group>"; };
 		E5D51FE32B3421E6004FBB84 /* HomeConnectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeConnectView.swift; sourceTree = "<group>"; };
 		E5D51FE52B3441D0004FBB84 /* HomeFlowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFlowView.swift; sourceTree = "<group>"; };
+		E5D51FE82B345C74004FBB84 /* ServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerController.swift; sourceTree = "<group>"; };
+		E5D51FEA2B345FB0004FBB84 /* ServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
+		E5D51FEC2B3467F0004FBB84 /* HomeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSettingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +77,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E53E0B8A2B352F5C001E2529 /* ConnectStatus */ = {
+			isa = PBXGroup;
+			children = (
+				E53E0B8B2B353250001E2529 /* ConnectStatusController.swift */,
+			);
+			path = ConnectStatus;
+			sourceTree = "<group>";
+		};
 		E5C0E3412B331DBC0060CF4F = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +106,8 @@
 		E5C0E34C2B331DBC0060CF4F /* StealthRocketVPN */ = {
 			isa = PBXGroup;
 			children = (
+				E53E0B8A2B352F5C001E2529 /* ConnectStatus */,
+				E5D51FE72B345C2C004FBB84 /* Server */,
 				E5D51FDD2B340FBE004FBB84 /* Advertise */,
 				E5D51FD82B340924004FBB84 /* Home */,
 				E5D51FD52B33E52B004FBB84 /* Tools */,
@@ -125,6 +143,7 @@
 				E5D51FD92B34094D004FBB84 /* HomeController.swift */,
 				E5D51FE32B3421E6004FBB84 /* HomeConnectView.swift */,
 				E5D51FE52B3441D0004FBB84 /* HomeFlowView.swift */,
+				E5D51FEC2B3467F0004FBB84 /* HomeSettingView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -135,6 +154,15 @@
 				E5D51FDE2B34101F004FBB84 /* OpenAdMob.swift */,
 			);
 			path = Advertise;
+			sourceTree = "<group>";
+		};
+		E5D51FE72B345C2C004FBB84 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				E5D51FE82B345C74004FBB84 /* ServerController.swift */,
+				E5D51FEA2B345FB0004FBB84 /* ServerCell.swift */,
+			);
+			path = Server;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +289,14 @@
 				E5D51FE62B3441D0004FBB84 /* HomeFlowView.swift in Sources */,
 				E5D51FDF2B34101F004FBB84 /* OpenAdMob.swift in Sources */,
 				E5D51FD42B33DDAE004FBB84 /* OpenLodingController.swift in Sources */,
+				E5D51FEB2B345FB0004FBB84 /* ServerCell.swift in Sources */,
 				E5D51FD72B33E567004FBB84 /* ColorHex.swift in Sources */,
 				E5D51FDC2B340A09004FBB84 /* ConstantFile.swift in Sources */,
 				E5D51FE42B3421E6004FBB84 /* HomeConnectView.swift in Sources */,
 				E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */,
+				E5D51FED2B3467F0004FBB84 /* HomeSettingView.swift in Sources */,
+				E53E0B8C2B353250001E2529 /* ConnectStatusController.swift in Sources */,
+				E5D51FE92B345C74004FBB84 /* ServerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,6 +445,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthRocketVPN/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketVPN;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -446,6 +479,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthRocketVPN/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketVPN;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

@@ -9,6 +9,8 @@ import UIKit
 
 class HomeController: UIViewController {
     
+    let backImg = UIImageView(image: UIImage(named: "home-discontectback"))
+    
     let connectStatusImg = UIImageView(image: UIImage(named: "home-offImg"))
     
     let timeLab = UILabel()
@@ -19,8 +21,9 @@ class HomeController: UIViewController {
     
     let upload = HomeFlowView(direction: "Upload", img: "home-upload")
     
+    let setttingView = HomeSettingView()
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,7 +37,6 @@ class HomeController: UIViewController {
         let settingItem = UIBarButtonItem(image: UIImage(named: "home-setting"), style: .done, target: self, action: #selector(settingBtn))
         navigationItem.leftBarButtonItem = settingItem
         
-        let backImg = UIImageView(image: UIImage(named: "home-backcolor"))
         view.addSubview(backImg)
         backImg.snp.makeConstraints { make in
             
@@ -97,16 +99,24 @@ extension HomeController {
     
     @objc func settingBtn() {
         
-        
+        navigationController?.view.addSubview(setttingView)
+        setttingView.snp.makeConstraints { make in
+            
+            make.edges.equalToSuperview()
+        }
+        setttingView.pushView()
     }
     
     @objc func serverBtn() {
         
-        
+        let serverVC = ServerController()
+        navigationController?.pushViewController(serverVC, animated: true)
     }
     
     @objc func connectBtn() {
         
         print("connectBtn")
+        let connectVC = ConnectStatusController()
+        navigationController?.pushViewController(connectVC, animated: true)
     }
 }
