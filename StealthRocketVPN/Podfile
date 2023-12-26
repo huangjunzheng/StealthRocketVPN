@@ -2,23 +2,26 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '13.0'
 
-
-#def Common
-#
-#  
-#end
-
-
 target 'StealthRocketVPN' do
   use_frameworks!
   
-#  Common
-
   pod 'SnapKit'
   pod 'YYModel'
   pod 'AFNetworking'
+  pod 'MMWormhole'
+  pod 'KeychainSwift'
 
 end
+
+
+target 'StealthRocketNetworkExtentsion' do
+  use_frameworks!
+  
+  pod 'MMWormhole'
+  pod 'KeychainSwift'
+
+end
+
 
 post_install do |installer|
     installer.generated_projects.each do |project|
