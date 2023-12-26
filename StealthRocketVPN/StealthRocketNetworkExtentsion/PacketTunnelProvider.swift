@@ -8,16 +8,19 @@
 import NetworkExtension
 import KeychainSwift
 import Tun2socks
-import Foundation
+import MMWormhole
 
-let Keychain = "KeychainID"
 let ExecAppStartAction = "ExecAppStartAction"
 let ExecAppStopAction = "ExecAppStopAction"
+let VPNStateNotify = "VPNStateNotify"
+let VPNConnectErrorNotify = "VPNConnectErrorNotify"
 
 
 class PacketTunnelProvider: NEPacketTunnelProvider {
         
     var ss = Shadowsocks()
+    
+    let wormhole = MMWormhole(applicationGroupIdentifier: "group.c.StealthRocketVPN", optionalDirectory: nil)
     
     var startCompletion: ((Error?) -> (Void))?
     
@@ -29,7 +32,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         
         let key = KeychainSwift()
-        if let data = key.getData(Keychain),
+        if let data = key.getData("KeychainID"),
            let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers),
            let dic = json as? [String:Any] {
             
@@ -53,7 +56,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     self.setTunnelNetworkSettings(setting) { [weak self] err in
                         
                         guard let self = self else { return }
-                        if err == nil {
+                        if let err = err {
+                            self.execAppCallback(isStart: true, error: err)
+                            wormhole.passMessageObject(NSDictionary(dictionary: ["error" : err]), identifier: VPNConnectErrorNotify)
+                        }else {
                             
                             if self.reasserting {
                                 self.reasserting = false
@@ -72,12 +78,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                                     Thread.detachNewThreadSelector(#selector(processInboundPackets), toTarget: self, with: nil)
                                 }
                             }
+                            self.execAppCallback(isStart: true, error: nil)
+                            wormhole.passMessageObject(NSDictionary(dictionary: ["VPNState" : 1]), identifier: VPNStateNotify)
                         }
-                        self.execAppCallback(isStart: true, error: err)
                     }
                 }else {
                     let err = NSError(domain: NEVPNErrorDomain, code: NEVPNConnectionError.configurationFailed.rawValue)
                     self.execAppCallback(isStart: true, error: err)
+                    wormhole.passMessageObject(NSDictionary(dictionary: ["error" : err]), identifier: VPNConnectErrorNotify)
                 }
             }
         }
@@ -90,6 +98,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             
             self?.cancelTunnelWithError(nil)
             self?.execAppCallback(isStart: false, error: nil)
+            self?.wormhole.passMessageObject(NSDictionary(dictionary: ["VPNState" : 0]), identifier: VPNStateNotify)
         }
     }
 }

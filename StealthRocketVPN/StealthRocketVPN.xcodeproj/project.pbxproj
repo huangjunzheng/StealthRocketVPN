@@ -54,6 +54,7 @@
 		E553DA2C2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */; };
 		E553DA322B3AAAF40091F4CE /* Shadowsocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E553DA312B3AAAF40091F4CE /* Shadowsocks.m */; };
 		E553DA382B3AB08A0091F4CE /* ConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E553DA372B3AB08A0091F4CE /* ConnectModel.m */; };
+		E553DA3B2B3AF4D80091F4CE /* SSConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA3A2B3AF4D80091F4CE /* SSConnect.swift */; };
 		E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */; };
 		E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3562B331DBD0060CF4F /* Assets.xcassets */; };
 		E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */; };
@@ -121,6 +122,7 @@
 		E553DA312B3AAAF40091F4CE /* Shadowsocks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shadowsocks.m; sourceTree = "<group>"; };
 		E553DA362B3AB08A0091F4CE /* ConnectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectModel.h; sourceTree = "<group>"; };
 		E553DA372B3AB08A0091F4CE /* ConnectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectModel.m; sourceTree = "<group>"; };
+		E553DA3A2B3AF4D80091F4CE /* SSConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSConnect.swift; sourceTree = "<group>"; };
 		E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthRocketVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5C0E3562B331DBD0060CF4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -266,6 +268,14 @@
 			path = StealthRocketNetworkExtentsion;
 			sourceTree = "<group>";
 		};
+		E553DA392B3AF49D0091F4CE /* SSConnect */ = {
+			isa = PBXGroup;
+			children = (
+				E553DA3A2B3AF4D80091F4CE /* SSConnect.swift */,
+			);
+			path = SSConnect;
+			sourceTree = "<group>";
+		};
 		E5C0E3412B331DBC0060CF4F = {
 			isa = PBXGroup;
 			children = (
@@ -289,6 +299,7 @@
 		E5C0E34C2B331DBC0060CF4F /* StealthRocketVPN */ = {
 			isa = PBXGroup;
 			children = (
+				E553DA392B3AF49D0091F4CE /* SSConnect */,
 				E553DA1A2B3AA5940091F4CE /* StealthRocketVPN.entitlements */,
 				E53E0BD12B3A9F02001E2529 /* SSLib */,
 				E53E0BC72B358F10001E2529 /* GlobalParameters  */,
@@ -455,7 +466,7 @@
 			);
 			mainGroup = E5C0E3412B331DBC0060CF4F;
 			packageReferences = (
-				E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads.git" */,
+				E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				E53E0B8D2B35747D001E2529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = E5C0E34B2B331DBC0060CF4F /* Products */;
@@ -577,6 +588,7 @@
 				E5D51FDC2B340A09004FBB84 /* ConstantFile.swift in Sources */,
 				E5D51FE42B3421E6004FBB84 /* HomeConnectView.swift in Sources */,
 				E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */,
+				E553DA3B2B3AF4D80091F4CE /* SSConnect.swift in Sources */,
 				E53E0BC62B3575AF001E2529 /* FirebaseConfig.swift in Sources */,
 				E5D51FED2B3467F0004FBB84 /* HomeSettingView.swift in Sources */,
 				E53E0BCB2B392048001E2529 /* ServerModel.swift in Sources */,
@@ -946,7 +958,7 @@
 				minimumVersion = 10.19.1;
 			};
 		};
-		E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads.git" */ = {
+		E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
 			requirement = {
@@ -1094,7 +1106,7 @@
 		};
 		E5D51FE12B34110F004FBB84 /* GoogleMobileAds */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads.git" */;
+			package = E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
