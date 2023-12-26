@@ -21,7 +21,6 @@ class ConnectStatusController: UIViewController {
     
     let name = UILabel()
     
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()

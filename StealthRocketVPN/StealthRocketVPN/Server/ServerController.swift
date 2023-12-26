@@ -11,7 +11,9 @@ class ServerController: UIViewController, UIGestureRecognizerDelegate {
     
     let tabbleView = UITableView(frame: .zero, style: .grouped)
     
-
+    let serverArr = GlobalParameters.shared.serverArr
+    
+    
     deinit {
         print("ServerController - deinit")
     }
@@ -58,14 +60,28 @@ extension ServerController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        if GlobalParameters.shared.smartArr.count > 0 {
+            return serverArr.count + 1
+        }else {
+            return serverArr.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ServerCellKey, for: indexPath) as? ServerCell
-        cell?.img.image = UIImage(named: "server-smart")
-        cell?.titleLab.text = "Super Fast Servers"
+        if indexPath.row == 0 && GlobalParameters.shared.smartArr.count > 0 {
+            
+            cell?.titleLab.text = "Super Fast Servers"
+            cell?.img.image = UIImage(named: "server-smart")
+        }else {
+            
+            let name = serverArr[indexPath.row]
+            cell?.titleLab.text = name.ste_bili
+            let lowercasedString = name.ste_bili.lowercased()
+            let stringWithoutSpaces = lowercasedString.replacingOccurrences(of: " ", with: "")
+            cell?.img.image = UIImage(named: stringWithoutSpaces)
+        }
         return cell ?? UITableViewCell()
     }
     

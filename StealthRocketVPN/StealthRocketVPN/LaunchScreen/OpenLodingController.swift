@@ -54,6 +54,7 @@ class OpenLodingController: UIViewController {
             make.size.equalTo(CGSize(width: 80, height: 8))
             make.centerX.equalToSuperview()
         }
+        startLodingTimer()
     }
     
     func startLodingTimer() {
@@ -63,7 +64,11 @@ class OpenLodingController: UIViewController {
             
             guard let self = self else { return }
             self.count += 1
-            if self.count > 10 {
+            var expired = 10
+            if GlobalParameters.shared.isHotStart {
+                expired = 3
+            }
+            if self.count > expired {
                 
                 self.pushToHome()
                 return
@@ -86,20 +91,30 @@ class OpenLodingController: UIViewController {
     func pushToHome() {
         
         stopTime()
-        let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
-        let rootVC = UINavigationController(rootViewController: HomeController())
-        window?.rootViewController = rootVC
+        if GlobalParameters.shared.isHotStart {
+            
+            navigationController?.popViewController(animated: false)
+        }else {
+            
+            let window = UIApplication.shared.windows.first(where: {$0.isKeyWindow})
+            let rootVC = UINavigationController(rootViewController: HomeController())
+            window?.rootViewController = rootVC
+        }
     }
     
     @objc func progressDidChange(sender: Notification) {
         
         if let progressRate = sender.userInfo?["progress"] as? Float {
             
+            print("progressRate: \(progressRate)")
             view.layoutIfNeeded()
             progress.setProgress(progressRate, animated: true)
-            if progressRate >= 1 {
+            
+            if progressRate >= 1 { // 全部配置加载完成
                 
-                DispatchQueue.main.asyncAfter(deadline: .now()+1) { [weak self] in
+                stopTime()
+                OpenAdMob.shared.show(vc: self) { [weak self] in
+                    
                     self?.pushToHome()
                 }
             }
