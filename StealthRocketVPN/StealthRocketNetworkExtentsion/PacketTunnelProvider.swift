@@ -55,19 +55,29 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         guard let self = self else { return }
                         if err == nil {
                             
-                            self.startTun2SocksWithPort(port: 9999)
-                            self.execAppCallback(action: ExecAppStartAction, error: err)
-                        }else {
+                            if self.reasserting {
+                                self.reasserting = false
+                            }
                             
-                            self.execAppCallback(action: ExecAppStartAction, error: err)
+                            if self.isTunnelConnected {
+                                self.execAppCallback(isStart: true, error: nil)
+                                return
+                            }
+                            Tun2socksStartSocks(self, "127.0.0.1", 9999)
+                            self.isTunnelConnected = true
+                            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+                                DispatchQueue.main.async { [weak self] in
+                                    
+                                    guard let self = self else { return }
+                                    Thread.detachNewThreadSelector(#selector(processInboundPackets), toTarget: self, with: nil)
+                                }
+                            }
                         }
-                        completionHandler(err)
+                        self.execAppCallback(isStart: true, error: err)
                     }
                 }else {
-                    
-                    self.execAppCallback(action: ExecAppStartAction, error: nil)
                     let err = NSError(domain: NEVPNErrorDomain, code: NEVPNConnectionError.configurationFailed.rawValue)
-                    completionHandler(err)
+                    self.execAppCallback(isStart: true, error: err)
                 }
             }
         }
@@ -76,12 +86,10 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         
         stopCompletion = completionHandler
-        isTunnelConnected = false
         ss.stop { [weak self] in
             
             self?.cancelTunnelWithError(nil)
-            self?.execAppCallback(action: ExecAppStopAction, error: nil)
-            completionHandler()
+            self?.execAppCallback(isStart: false, error: nil)
         }
     }
 }
@@ -96,25 +104,7 @@ extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
         
         packetFlow.writePackets([packet], withProtocols: [NSNumber(value: AF_INET)])
     }
-    
-    func startTun2SocksWithPort(port: Int) {
-        
-        if isTunnelConnected {
-            
-            execAppCallback(action: ExecAppStartAction, error: nil)
-            return
-        }
-        Tun2socksStartSocks(self, "127.0.0.1", port)
-        isTunnelConnected = true
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-            DispatchQueue.main.async { [weak self] in
-                
-                guard let self = self else { return }
-                Thread.detachNewThreadSelector(#selector(processInboundPackets), toTarget: self, with: nil)
-            }
-        }
-    }
-    
+
     @objc func processInboundPackets() {
         
         packetFlow.readPackets { packets, protocols in
@@ -130,13 +120,13 @@ extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
     }
     
     // MARK: - App IPC
-    func execAppCallback(action: String, error: Error?) {
+    func execAppCallback(isStart: Bool, error: Error?) {
         
-        if action == ExecAppStartAction && startCompletion != nil {
+        if isStart == true && startCompletion != nil {
             
             startCompletion?(error)
             startCompletion = nil
-        }else if action == ExecAppStopAction && stopCompletion != nil {
+        }else if isStart == false && stopCompletion != nil {
             
             stopCompletion?()
             stopCompletion = nil
