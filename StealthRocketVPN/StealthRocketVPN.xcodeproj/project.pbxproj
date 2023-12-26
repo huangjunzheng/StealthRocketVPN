@@ -40,6 +40,17 @@
 		E53E0BC92B358F35001E2529 /* GlobalParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53E0BC82B358F35001E2529 /* GlobalParameters.swift */; };
 		E53E0BCB2B392048001E2529 /* ServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53E0BCA2B392048001E2529 /* ServerModel.swift */; };
 		E53E0BCD2B396145001E2529 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E53E0BCC2B396145001E2529 /* GoogleService-Info.plist */; };
+		E553DA0D2B3AA3F00091F4CE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA0C2B3AA3F00091F4CE /* NetworkExtension.framework */; };
+		E553DA102B3AA3F00091F4CE /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA0F2B3AA3F00091F4CE /* PacketTunnelProvider.swift */; };
+		E553DA152B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E553DA0B2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		E553DA222B3AA6500091F4CE /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA212B3AA6500091F4CE /* Sentry.framework */; };
+		E553DA232B3AA6500091F4CE /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA212B3AA6500091F4CE /* Sentry.framework */; };
+		E553DA252B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA242B3AA65B0091F4CE /* Tun2socks.framework */; };
+		E553DA262B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA242B3AA65B0091F4CE /* Tun2socks.framework */; };
+		E553DA282B3AA6710091F4CE /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA272B3AA6710091F4CE /* CocoaAsyncSocket.framework */; };
+		E553DA292B3AA6710091F4CE /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA272B3AA6710091F4CE /* CocoaAsyncSocket.framework */; };
+		E553DA2B2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */; };
+		E553DA2C2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */; };
 		E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */; };
 		E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3562B331DBD0060CF4F /* Assets.xcassets */; };
 		E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */; };
@@ -56,6 +67,30 @@
 		E5D51FED2B3467F0004FBB84 /* HomeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FEC2B3467F0004FBB84 /* HomeSettingView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		E553DA132B3AA3F00091F4CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E5C0E3422B331DBC0060CF4F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E553DA0A2B3AA3F00091F4CE;
+			remoteInfo = StealthRocketNetworkExtentsion;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		E553DA192B3AA3F00091F4CE /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				E553DA152B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		23D7C8F9648DB3F2B327522B /* Pods_StealthRocketVPN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StealthRocketVPN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		456432464CA216038A09C0AA /* Pods-StealthRocketVPN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StealthRocketVPN.debug.xcconfig"; path = "Target Support Files/Pods-StealthRocketVPN/Pods-StealthRocketVPN.debug.xcconfig"; sourceTree = "<group>"; };
@@ -65,6 +100,16 @@
 		E53E0BC82B358F35001E2529 /* GlobalParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalParameters.swift; sourceTree = "<group>"; };
 		E53E0BCA2B392048001E2529 /* ServerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerModel.swift; sourceTree = "<group>"; };
 		E53E0BCC2B396145001E2529 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E553DA0B2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = StealthRocketNetworkExtentsion.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		E553DA0C2B3AA3F00091F4CE /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		E553DA0F2B3AA3F00091F4CE /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		E553DA112B3AA3F00091F4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E553DA122B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StealthRocketNetworkExtentsion.entitlements; sourceTree = "<group>"; };
+		E553DA1A2B3AA5940091F4CE /* StealthRocketVPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StealthRocketVPN.entitlements; sourceTree = "<group>"; };
+		E553DA212B3AA6500091F4CE /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sentry.framework; sourceTree = "<group>"; };
+		E553DA242B3AA65B0091F4CE /* Tun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Tun2socks.framework; sourceTree = "<group>"; };
+		E553DA272B3AA6710091F4CE /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaAsyncSocket.framework; sourceTree = "<group>"; };
+		E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Shadowsocks_iOS.framework; sourceTree = "<group>"; };
 		E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthRocketVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5C0E3562B331DBD0060CF4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -83,6 +128,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E553DA082B3AA3F00091F4CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E553DA292B3AA6710091F4CE /* CocoaAsyncSocket.framework in Frameworks */,
+				E553DA2C2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */,
+				E553DA232B3AA6500091F4CE /* Sentry.framework in Frameworks */,
+				E553DA262B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */,
+				E553DA0D2B3AA3F00091F4CE /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5C0E3472B331DBC0060CF4F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -94,14 +151,18 @@
 				E53E0BAD2B35747D001E2529 /* FirebaseFunctions in Frameworks */,
 				CABEDD1A300C76E3C49D6E73 /* Pods_StealthRocketVPN.framework in Frameworks */,
 				E53E0B8F2B35747D001E2529 /* FirebaseAnalytics in Frameworks */,
+				E553DA2B2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */,
 				E53E0B9B2B35747D001E2529 /* FirebaseAuth in Frameworks */,
 				E53E0BA52B35747D001E2529 /* FirebaseDynamicLinks in Frameworks */,
 				E53E0B9F2B35747D001E2529 /* FirebaseCrashlytics in Frameworks */,
+				E553DA252B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */,
 				E53E0BB72B35747D001E2529 /* FirebaseMLModelDownloader in Frameworks */,
+				E553DA282B3AA6710091F4CE /* CocoaAsyncSocket.framework in Frameworks */,
 				E53E0BA32B35747D001E2529 /* FirebaseDatabaseSwift in Frameworks */,
 				E53E0BA72B35747D001E2529 /* FirebaseFirestore in Frameworks */,
 				E53E0BB52B35747D001E2529 /* FirebaseInstallations in Frameworks */,
 				E53E0BAF2B35747D001E2529 /* FirebaseFunctionsCombine-Community in Frameworks */,
+				E553DA222B3AA6500091F4CE /* Sentry.framework in Frameworks */,
 				E53E0BA92B35747D001E2529 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				E53E0BA12B35747D001E2529 /* FirebaseDatabase in Frameworks */,
 				E53E0BBB2B35747D001E2529 /* FirebasePerformance in Frameworks */,
@@ -135,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				23D7C8F9648DB3F2B327522B /* Pods_StealthRocketVPN.framework */,
+				E553DA0C2B3AA3F00091F4CE /* NetworkExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -163,10 +225,32 @@
 			path = "GlobalParameters ";
 			sourceTree = "<group>";
 		};
+		E53E0BD12B3A9F02001E2529 /* SSLib */ = {
+			isa = PBXGroup;
+			children = (
+				E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */,
+				E553DA272B3AA6710091F4CE /* CocoaAsyncSocket.framework */,
+				E553DA242B3AA65B0091F4CE /* Tun2socks.framework */,
+				E553DA212B3AA6500091F4CE /* Sentry.framework */,
+			);
+			path = SSLib;
+			sourceTree = "<group>";
+		};
+		E553DA0E2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion */ = {
+			isa = PBXGroup;
+			children = (
+				E553DA0F2B3AA3F00091F4CE /* PacketTunnelProvider.swift */,
+				E553DA112B3AA3F00091F4CE /* Info.plist */,
+				E553DA122B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.entitlements */,
+			);
+			path = StealthRocketNetworkExtentsion;
+			sourceTree = "<group>";
+		};
 		E5C0E3412B331DBC0060CF4F = {
 			isa = PBXGroup;
 			children = (
 				E5C0E34C2B331DBC0060CF4F /* StealthRocketVPN */,
+				E553DA0E2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion */,
 				E5C0E34B2B331DBC0060CF4F /* Products */,
 				2E28FB32C6721700FBCADF75 /* Pods */,
 				D0C493F9F24E7F3A8925A9E3 /* Frameworks */,
@@ -177,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */,
+				E553DA0B2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -184,6 +269,8 @@
 		E5C0E34C2B331DBC0060CF4F /* StealthRocketVPN */ = {
 			isa = PBXGroup;
 			children = (
+				E553DA1A2B3AA5940091F4CE /* StealthRocketVPN.entitlements */,
+				E53E0BD12B3A9F02001E2529 /* SSLib */,
 				E53E0BC72B358F10001E2529 /* GlobalParameters  */,
 				E53E0BC42B35756E001E2529 /* FirebaseConfig */,
 				E53E0B8A2B352F5C001E2529 /* ConnectStatus */,
@@ -250,6 +337,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		E553DA0A2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E553DA162B3AA3F00091F4CE /* Build configuration list for PBXNativeTarget "StealthRocketNetworkExtentsion" */;
+			buildPhases = (
+				E553DA072B3AA3F00091F4CE /* Sources */,
+				E553DA082B3AA3F00091F4CE /* Frameworks */,
+				E553DA092B3AA3F00091F4CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = StealthRocketNetworkExtentsion;
+			productName = StealthRocketNetworkExtentsion;
+			productReference = E553DA0B2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		E5C0E3492B331DBC0060CF4F /* StealthRocketVPN */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5C0E35E2B331DBD0060CF4F /* Build configuration list for PBXNativeTarget "StealthRocketVPN" */;
@@ -259,10 +363,12 @@
 				E5C0E3472B331DBC0060CF4F /* Frameworks */,
 				E5C0E3482B331DBC0060CF4F /* Resources */,
 				EC47B60D921B24F51463CADA /* [CP] Embed Pods Frameworks */,
+				E553DA192B3AA3F00091F4CE /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				E553DA142B3AA3F00091F4CE /* PBXTargetDependency */,
 			);
 			name = StealthRocketVPN;
 			packageProductDependencies = (
@@ -309,6 +415,9 @@
 				LastSwiftUpdateCheck = 1500;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					E553DA0A2B3AA3F00091F4CE = {
+						CreatedOnToolsVersion = 15.0.1;
+					};
 					E5C0E3492B331DBC0060CF4F = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -332,11 +441,19 @@
 			projectRoot = "";
 			targets = (
 				E5C0E3492B331DBC0060CF4F /* StealthRocketVPN */,
+				E553DA0A2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E553DA092B3AA3F00091F4CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5C0E3482B331DBC0060CF4F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -392,6 +509,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E553DA072B3AA3F00091F4CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E553DA102B3AA3F00091F4CE /* PacketTunnelProvider.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5C0E3462B331DBC0060CF4F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -416,6 +541,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		E553DA142B3AA3F00091F4CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E553DA0A2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion */;
+			targetProxy = E553DA132B3AA3F00091F4CE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -428,6 +561,66 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E553DA172B3AA3F00091F4CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StealthRocketNetworkExtentsion/StealthRocketNetworkExtentsion.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SCT3Z5ZYL6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StealthRocketVPN/SSLib",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StealthRocketNetworkExtentsion/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketNetworkExtentsion;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = c.StealthRocketVPN.StealthRocketNetworkExtentsion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E553DA182B3AA3F00091F4CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = StealthRocketNetworkExtentsion/StealthRocketNetworkExtentsion.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = SCT3Z5ZYL6;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StealthRocketVPN/SSLib",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = StealthRocketNetworkExtentsion/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketNetworkExtentsion;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = c.StealthRocketVPN.StealthRocketNetworkExtentsion;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		E5C0E35C2B331DBD0060CF4F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -551,12 +744,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 456432464CA216038A09C0AA /* Pods-StealthRocketVPN.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StealthRocketVPN/StealthRocketVPN.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SCT3Z5ZYL6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StealthRocketVPN/SSLib",
+					"$(PROJECT_DIR)/StealthRocketVPN/SSLib/go-tun2socks/ios",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthRocketVPN/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketVPN;
@@ -599,12 +799,19 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A4E5C9164D6DC120D9D2C967 /* Pods-StealthRocketVPN.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = StealthRocketVPN/StealthRocketVPN.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = SCT3Z5ZYL6;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/StealthRocketVPN/SSLib",
+					"$(PROJECT_DIR)/StealthRocketVPN/SSLib/go-tun2socks/ios",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = StealthRocketVPN/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketVPN;
@@ -646,6 +853,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E553DA162B3AA3F00091F4CE /* Build configuration list for PBXNativeTarget "StealthRocketNetworkExtentsion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E553DA172B3AA3F00091F4CE /* Debug */,
+				E553DA182B3AA3F00091F4CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		E5C0E3452B331DBC0060CF4F /* Build configuration list for PBXProject "StealthRocketVPN" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
