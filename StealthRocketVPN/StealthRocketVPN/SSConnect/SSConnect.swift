@@ -127,7 +127,7 @@ class SSConnect: NSObject {
                 
                 let config = NETunnelProviderProtocol()
                 config.serverAddress = ""
-                config.providerBundleIdentifier = "c.StealthRocketVPN.StealthRocketNetworkExtentsion"
+                config.providerBundleIdentifier = "com.stealth.rocket.secure.high.speed.link.StealthRocketNetworkExtentsion"
                 self.tunnel.protocolConfiguration = config
                 self.tunnel.isEnabled = true
                 self.tunnel.saveToPreferences(completionHandler: { [weak self] error in

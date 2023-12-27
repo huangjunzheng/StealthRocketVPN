@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageUI
 
 class HomeController: UIViewController {
     
@@ -131,10 +132,14 @@ class HomeController: UIViewController {
 
 
 // UI点击事件
-extension HomeController {
+extension HomeController: MFMailComposeViewControllerDelegate {
     
     @objc func settingBtn() {
         
+        setttingView.contact.addTarget(self, action: #selector(setttingContact), for: .touchUpInside)
+        setttingView.privacypolicy.addTarget(self, action: #selector(setttingPrivacypolicy), for: .touchUpInside)
+        setttingView.update.addTarget(self, action: #selector(setttingUpdate), for: .touchUpInside)
+        setttingView.share.addTarget(self, action: #selector(setttingShare), for: .touchUpInside)
         navigationController?.view.addSubview(setttingView)
         setttingView.snp.makeConstraints { make in
             
@@ -177,6 +182,48 @@ extension HomeController {
             let vc = ConnectStatusController()
             self.navigationController?.pushViewController(vc, animated: true)
         }
+    }
+    
+    @objc func setttingContact() {
+        
+        if MFMailComposeViewController.canSendMail() {
+
+            let email = MFMailComposeViewController()
+            email.mailComposeDelegate = self
+            email.setToRecipients(["support@stealthrockets.com"])
+            present(email, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func setttingPrivacypolicy() {
+        
+        if let url = URL(string: "https://stealthrockets.com/privacy/") {
+            let web = BasisWebView()
+            web.load(url: url, title: "Privacy Policy")
+            present(web, animated: true)
+        }
+    }
+    
+    @objc func setttingUpdate() {
+        
+        if let url = URL(string: "https://stealthrockets.com/terms/") {
+            let web = BasisWebView()
+            web.load(url: url, title: "Terms")
+            present(web, animated: true)
+        }
+    }
+    
+    @objc func setttingShare() {
+        
+        let img = UIImage(named: "launchScreen-icon") ?? UIImage()
+        let activityVC = UIActivityViewController(activityItems: ["StealthRocket VPN", img], applicationActivities: nil)
+        present(activityVC, animated: true, completion: nil)
+    }
+    
+    // MFMailComposeViewControllerDelegate
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+
+        controller.dismiss(animated: true, completion: nil)
     }
 }
 
