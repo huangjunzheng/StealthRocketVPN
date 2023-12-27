@@ -51,6 +51,8 @@
 		E553DA322B3AAAF40091F4CE /* Shadowsocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E553DA312B3AAAF40091F4CE /* Shadowsocks.m */; };
 		E553DA382B3AB08A0091F4CE /* ConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E553DA372B3AB08A0091F4CE /* ConnectModel.m */; };
 		E553DA3B2B3AF4D80091F4CE /* SSConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA3A2B3AF4D80091F4CE /* SSConnect.swift */; };
+		E553DA3D2B3BF0520091F4CE /* HomeAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA3C2B3BF0520091F4CE /* HomeAdMob.swift */; };
+		E553DA3F2B3BF15B0091F4CE /* HomeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E553DA3E2B3BF15B0091F4CE /* HomeAdView.xib */; };
 		E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */; };
 		E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3562B331DBD0060CF4F /* Assets.xcassets */; };
 		E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */; };
@@ -117,6 +119,8 @@
 		E553DA362B3AB08A0091F4CE /* ConnectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectModel.h; sourceTree = "<group>"; };
 		E553DA372B3AB08A0091F4CE /* ConnectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectModel.m; sourceTree = "<group>"; };
 		E553DA3A2B3AF4D80091F4CE /* SSConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSConnect.swift; sourceTree = "<group>"; };
+		E553DA3C2B3BF0520091F4CE /* HomeAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdMob.swift; sourceTree = "<group>"; };
+		E553DA3E2B3BF15B0091F4CE /* HomeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeAdView.xib; sourceTree = "<group>"; };
 		E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthRocketVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5C0E3562B331DBD0060CF4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -339,6 +343,8 @@
 			isa = PBXGroup;
 			children = (
 				E5D51FDE2B34101F004FBB84 /* OpenAdMob.swift */,
+				E553DA3C2B3BF0520091F4CE /* HomeAdMob.swift */,
+				E553DA3E2B3BF15B0091F4CE /* HomeAdView.xib */,
 			);
 			path = Advertise;
 			sourceTree = "<group>";
@@ -479,6 +485,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E553DA3F2B3BF15B0091F4CE /* HomeAdView.xib in Resources */,
 				E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */,
 				E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */,
 				E53E0BCD2B396145001E2529 /* GoogleService-Info.plist in Resources */,
@@ -576,6 +583,7 @@
 				E5D51FDC2B340A09004FBB84 /* ConstantFile.swift in Sources */,
 				E5D51FE42B3421E6004FBB84 /* HomeConnectView.swift in Sources */,
 				E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */,
+				E553DA3D2B3BF0520091F4CE /* HomeAdMob.swift in Sources */,
 				E553DA3B2B3AF4D80091F4CE /* SSConnect.swift in Sources */,
 				E53E0BC62B3575AF001E2529 /* FirebaseConfig.swift in Sources */,
 				E5D51FED2B3467F0004FBB84 /* HomeSettingView.swift in Sources */,
@@ -625,6 +633,7 @@
 				INFOPLIST_FILE = StealthRocketNetworkExtentsion/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketNetworkExtentsion;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -634,6 +643,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = c.StealthRocketVPN.StealthRocketNetworkExtentsion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "StealthRocketNetworkExtentsion/StealthRocketNetworkExtentsion-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -660,6 +672,7 @@
 				INFOPLIST_FILE = StealthRocketNetworkExtentsion/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketNetworkExtentsion;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -669,6 +682,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = c.StealthRocketVPN.StealthRocketNetworkExtentsion;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "StealthRocketNetworkExtentsion/StealthRocketNetworkExtentsion-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

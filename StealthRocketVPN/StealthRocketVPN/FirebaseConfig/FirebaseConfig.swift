@@ -58,11 +58,37 @@ class FirebaseConfig: NSObject {
     
     func fetchServerConfig() {
         
-        guard let json = RemoteConfig.remoteConfig().configValue(forKey: "ste").jsonValue,
-              let arr = NSArray.yy_modelArray(with: ServerModel.self, json: json) as? [ServerModel] else {
-            return
-        }
-        globalParameters.serverArr = arr
+//        guard let json = RemoteConfig.remoteConfig().configValue(forKey: "ste").jsonValue,
+//              let arr = NSArray.yy_modelArray(with: ServerModel.self, json: json) as? [ServerModel] else {
+//            return
+//        }
+//        globalParameters.serverArr = arr
+        
+        
+        // test
+        let model1 = ServerModel()
+        model1.ste_pisi = "OvK5uBRasdPWJGmreUML"
+        model1.ste_tude = "chacha20-ietf-poly1305"
+        model1.ste_vagm = "5231"
+        model1.ste_bili = "Canada"
+        model1.ste_home = "137.220.54.94"
+        globalParameters.serverArr.append(model1)
+        
+        let model2 = ServerModel()
+        model2.ste_pisi = "OvK5uBRasdPWJGmreUML"
+        model2.ste_tude = "chacha20-ietf-poly1305"
+        model2.ste_vagm = "5231"
+        model2.ste_bili = "United States"
+        model2.ste_home = "38.143.66.92"
+        globalParameters.serverArr.append(model2)
+        
+        let model3 = ServerModel()
+        model3.ste_pisi = "OvK5uBRasdPWJGmreUML"
+        model3.ste_tude = "chacha20-ietf-poly1305"
+        model3.ste_vagm = "5231"
+        model3.ste_bili = "United States"
+        model3.ste_home = "31.13.213.162"
+        globalParameters.serverArr.append(model3)
         
         // 添加smart
         if globalParameters.smartArr.count > 0 {

@@ -24,9 +24,23 @@ class HomeController: UIViewController {
     let setttingView = HomeSettingView()
     
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        HomeAdMob.shared.show(vc: self) { isSuccess in
+            
+            if !isSuccess {
+                HomeAdMob.shared.requestAd(complete: nil)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if GlobalParameters.shared.selectServer == nil {
+            GlobalParameters.shared.selectServer = GlobalParameters.shared.serverArr.first
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDidSuccessd), name: SSConnectDidSuccessdKey, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDidStop), name: SSConnectDidStopKey, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectFailed), name: SSConnectFailedKey, object: nil)

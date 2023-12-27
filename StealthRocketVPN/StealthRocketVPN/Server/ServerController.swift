@@ -47,6 +47,13 @@ class ServerController: UIViewController, UIGestureRecognizerDelegate {
             make.leading.trailing.equalToSuperview()
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
+        
+        var indexPath = IndexPath(row: 0, section: 0)
+        if let selectServer = GlobalParameters.shared.selectServer,
+           let index = GlobalParameters.shared.serverArr.firstIndex(of: selectServer) {
+            indexPath = IndexPath(row: index, section: 0)
+        }
+        tabbleView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
     }
     
     @objc func backBtn() {

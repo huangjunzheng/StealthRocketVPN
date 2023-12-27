@@ -31,15 +31,18 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
         
+        NSLog("extentsion - startTunnel")
         let key = KeychainSwift()
         if let data = key.getData("KeychainID"),
            let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers),
            let dic = json as? [String:Any] {
             
+            print("extentsion - startTunnel dic:\(dic)")
             startCompletion = completionHandler
             let model = ConnectModel(dic: dic)
             ss.start(with: model) { [weak self] isSuccess in
                 
+                print("extentsion - ss.start isSuccess:\(isSuccess)")
                 guard let self = self else { return }
                 if isSuccess {
                     
@@ -55,6 +58,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     
                     self.setTunnelNetworkSettings(setting) { [weak self] err in
                         
+                        print("extentsion - setTunnelNetworkSettings err:\(String(describing: err))")
                         guard let self = self else { return }
                         if let err = err {
                             self.execAppCallback(isStart: true, error: err)
@@ -83,7 +87,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                         }
                     }
                 }else {
-                    let err = NSError(domain: NEVPNErrorDomain, code: NEVPNConnectionError.configurationFailed.rawValue)
+                    let err = NSError(domain: NEVPNErrorDomain, code: 4)
                     self.execAppCallback(isStart: true, error: err)
                     wormhole.passMessageObject(NSDictionary(dictionary: ["error" : err]), identifier: VPNConnectErrorNotify)
                 }
@@ -93,6 +97,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         
+        print("extentsion - stopTunnel")
         stopCompletion = completionHandler
         ss.stop { [weak self] in
             
@@ -116,6 +121,7 @@ extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
 
     @objc func processInboundPackets() {
         
+        print("extentsion - processInboundPackets)")
         packetFlow.readPackets { packets, protocols in
             
             for pack in packets {
@@ -131,6 +137,7 @@ extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
     // MARK: - App IPC
     func execAppCallback(isStart: Bool, error: Error?) {
         
+        print("extentsion - execAppCallback isStart: \(isStart), error: \(String(describing: error))")
         if isStart == true && startCompletion != nil {
             
             startCompletion?(error)

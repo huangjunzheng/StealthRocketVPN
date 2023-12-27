@@ -96,44 +96,33 @@ class SSConnect: NSObject {
         }
         connectModel = nil
     }
-    
+
     func setTunnelProvider(completion: @escaping(Error?) -> Void) {
         
         NETunnelProviderManager.loadAllFromPreferences() { (managers, error) in
-            
+                        
             if let error = error {
                 return completion(error)
             }
-            var manager: NETunnelProviderManager!
-            if let managers = managers,
-               managers.count > 0 {
-                
-                manager = managers.first
-                let hasOnDemandRules = !(manager?.onDemandRules?.isEmpty ?? true)
-                if manager.isEnabled && hasOnDemandRules {
-                    self.tunnel = manager
-                    return completion(nil)
-                }
-            } else {
+            
+            if let manager = managers?.first {
+                                
+                self.tunnel = manager
+                self.tunnel.loadFromPreferences(completionHandler: completion)
+            }else {
                 
                 let config = NETunnelProviderProtocol()
+                config.serverAddress = ""
                 config.providerBundleIdentifier = "c.StealthRocketVPN.StealthRocketNetworkExtentsion"
-                manager = NETunnelProviderManager()
-                manager.protocolConfiguration = config
-            }
-            let connectRule = NEOnDemandRuleConnect()
-            connectRule.interfaceTypeMatch = .any
-            manager.onDemandRules = [connectRule]
-            manager.isEnabled = true
-            manager.saveToPreferences() { error in
-                
-                if let error = error {
-                    return completion(error)
-                }
-                self.tunnel = manager
-                self.tunnel.loadFromPreferences() { error in
-                    completion(error)
-                }
+                self.tunnel.protocolConfiguration = config
+                self.tunnel.isEnabled = true
+                self.tunnel.saveToPreferences(completionHandler: { [weak self] error in
+                    
+                    if let error = error {
+                        return completion(error)
+                    }
+                    self?.tunnel.loadFromPreferences(completionHandler: completion)
+                })
             }
         }
     }
@@ -188,6 +177,6 @@ class SSConnect: NSObject {
     @objc func become() {
         
         connectDuration = NSDate().timeIntervalSince1970 - (willInBackTime ?? 0)
-        startTimer()
+//        startTimer()
     }
 }

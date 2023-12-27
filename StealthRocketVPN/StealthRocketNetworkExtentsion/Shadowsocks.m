@@ -27,6 +27,7 @@
 
 - (void)startWithModel:(ConnectModel *)model completion:(void (^)(BOOL))completion {
     
+    NSLog(@"extentsion - startWithModel model:%@", model);
     if (_ssLocalThreadId != 0) {
         return completion(false);
     }
@@ -40,6 +41,7 @@
 
 - (void)stop:(void (^)(void))completion {
     
+    NSLog(@"extentsion - stop");
     if (self.ssLocalThreadId == 0) {
         return;
     }
@@ -53,6 +55,7 @@
 
 void *startShadowsocks(void *udata) {
     
+    NSLog(@"extentsion - *startShadowsocks");
     Shadowsocks *ss = (__bridge Shadowsocks *)udata;
     [ss startShadowsocks];
     return NULL;
@@ -60,6 +63,7 @@ void *startShadowsocks(void *udata) {
 
 void shadowsocksCallback(int socks_fd, int udp_fd, void *udata) {
     
+    NSLog(@"extentsion - shadowsocksCallback");
     if (socks_fd <= 0 || udp_fd <= 0) {
         return;
     }
@@ -69,6 +73,7 @@ void shadowsocksCallback(int socks_fd, int udp_fd, void *udata) {
 
 - (void)startShadowsocksThread {
     
+    NSLog(@"extentsion - startShadowsocksThread");
     pthread_attr_t attr;
     int err = pthread_attr_init(&attr);
     if (err) {
@@ -96,6 +101,7 @@ void shadowsocksCallback(int socks_fd, int udp_fd, void *udata) {
 
 - (void)startShadowsocks {
     
+    NSLog(@"extentsion - startShadowsocks");
     if (self.model == nil) {
         self.startCompletion(false);
         return;
@@ -119,6 +125,7 @@ void shadowsocksCallback(int socks_fd, int udp_fd, void *udata) {
         .verbose = 0
     };
     int success = start_ss_local_server_with_callback(profile, shadowsocksCallback, (__bridge void *)self);
+    NSLog(@"extentsion - start_ss_local_server_with_callback success: %d", success);
     if (success < 0) {
         
         self.startCompletion(NO);
