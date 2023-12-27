@@ -34,6 +34,7 @@ class OpenLodingController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        navigationItem.hidesBackButton = true
         view.backgroundColor = UIColor(hex: "#212326", alpha: 1)
         let img = UIImageView(image: UIImage(named: "launchScreen-icon"))
         view.addSubview(img)
@@ -43,7 +44,6 @@ class OpenLodingController: UIViewController {
             make.height.equalTo(img.snp.width).priority(600.0/375.0)
         }
         
-        progress.progress = 0.5
         progress.layer.cornerRadius = 4
         progress.trackTintColor = UIColor(hex: "#2F3236", alpha: 1)
         progress.progressTintColor = .white
@@ -106,7 +106,6 @@ class OpenLodingController: UIViewController {
         
         if let progressRate = sender.userInfo?["progress"] as? Float {
             
-            print("progressRate: \(progressRate)")
             view.layoutIfNeeded()
             progress.setProgress(progressRate, animated: true)
             

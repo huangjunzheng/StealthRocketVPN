@@ -63,7 +63,7 @@ class SSConnect: NSObject {
         connectModel = model
         setTunnelProvider { error in
             
-            if let err = error {
+            if error != nil {
                 self.connectFailed()
                 return
             }

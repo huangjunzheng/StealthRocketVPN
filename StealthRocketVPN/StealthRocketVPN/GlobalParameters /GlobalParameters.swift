@@ -11,7 +11,6 @@ class GlobalParameters: NSObject {
 
     static let shared = GlobalParameters()
     
-    
     // 是否热启动
     var isHotStart = false
     
@@ -21,6 +20,9 @@ class GlobalParameters: NSObject {
     
     // smart服务器
     var smartArr = [String]()
+    
+    // 当前选择连接的服务器
+    var selectServer: ServerModel?
     
     
     

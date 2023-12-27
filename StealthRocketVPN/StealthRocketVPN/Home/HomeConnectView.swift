@@ -87,13 +87,12 @@ class HomeConnectView: UIView {
         switch status {
         case .connect:
             stopContectingAnimation()
-            titleLab.text = "Contect"
-            titleLab.textColor = .white
-            switchImg.image = UIImage(named: "home-off")
-            connectBtn.layer.borderWidth = 0
-            
+            titleLab.text = "Discontect"
+            titleLab.textColor = UIColor(hex: "#FFDC30", alpha: 1)
+            switchImg.image = UIImage(named: "home-on")
+            connectBtn.layer.borderWidth = 1
+                        
         case .connecting:
-            
             titleLab.text = "Contecting"
             titleLab.textColor = .white
             switchImg.image = UIImage(named: "home-contecting")
@@ -101,12 +100,11 @@ class HomeConnectView: UIView {
             startContectingAnimation()
             
         case .disconnect:
-            
             stopContectingAnimation()
-            titleLab.text = "Discontect"
-            titleLab.textColor = UIColor(hex: "#FFDC30", alpha: 1)
-            switchImg.image = UIImage(named: "home-on")
-            connectBtn.layer.borderWidth = 1
+            titleLab.text = "Contect"
+            titleLab.textColor = .white
+            switchImg.image = UIImage(named: "home-off")
+            connectBtn.layer.borderWidth = 0
         }
     }
     

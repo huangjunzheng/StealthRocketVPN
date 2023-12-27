@@ -63,5 +63,19 @@ class FirebaseConfig: NSObject {
             return
         }
         globalParameters.serverArr = arr
+        
+        // 添加smart
+        if globalParameters.smartArr.count > 0 {
+            
+            let model = globalParameters.serverArr.first
+            let smartModel = ServerModel()
+            smartModel.ste_pisi = model?.ste_pisi ?? ""
+            smartModel.ste_tude = model?.ste_tude ?? ""
+            smartModel.ste_vagm = model?.ste_vagm ?? ""
+            smartModel.ste_bili = "Super Fast Servers"
+            smartModel.ste_dicics = "Super Fast Servers"
+            smartModel.ste_home = globalParameters.smartArr.first ?? ""
+            globalParameters.serverArr.insert(smartModel, at: 0)
+        }
     }
 }

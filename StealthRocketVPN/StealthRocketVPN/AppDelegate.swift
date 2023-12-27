@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupConfig() {
         
         FirebaseApp.configure()
+        SSConnect.shared.setupConfig()
         
         AFNetworkReachabilityManager.shared().setReachabilityStatusChange { status in
             
@@ -62,12 +63,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         
-//        if #available(iOS 14, *) {
-//            ATTrackingManager.requestTrackingAuthorization { sta in }
-//        }else {
-//            let _ = ASIdentifierManager.shared().isAdvertisingTrackingEnabled
-//        }
-        
         guard inBackground else { return }
         inBackground = false
 
@@ -83,7 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         adVC.dismiss(animated: false)
                     }
                     let openLodingVC = OpenLodingController()
-                    root.pushViewController(openLodingVC, animated: false)
+                    root.topViewController?.navigationController?.pushViewController(openLodingVC, animated: false)
                     if OpenAdMob.shared.isEffective() {
                         
                         NotificationCenter.default.post(name: OpenLodingProgressDidChangeKey, object: nil, userInfo: ["progress": 1] as [String:Float])

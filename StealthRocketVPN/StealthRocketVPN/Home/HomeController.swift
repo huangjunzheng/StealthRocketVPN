@@ -27,6 +27,10 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDidSuccessd), name: SSConnectDidSuccessdKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDidStop), name: SSConnectDidStopKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SSConnectFailed), name: SSConnectFailedKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDurationDidChange), name: SSConnectDurationDidChangeKey, object: nil)
         setupView()
     }
     
@@ -62,7 +66,12 @@ class HomeController: UIViewController {
             make.top.equalTo(connectStatusImg.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
-        
+                
+        if SSConnect.shared.isVpnConnected() {
+            connectView.setConnect(status: .connect)
+        }else {
+            connectView.setConnect(status: .disconnect)
+        }
         connectView.connectBtn.addTarget(self, action: #selector(connectBtn), for: .touchUpInside)
         connectView.serverBtn.addTarget(self, action: #selector(serverBtn), for: .touchUpInside)
         view.addSubview(connectView)
@@ -95,6 +104,7 @@ class HomeController: UIViewController {
 }
 
 
+// UI点击事件
 extension HomeController {
     
     @objc func settingBtn() {
@@ -114,9 +124,40 @@ extension HomeController {
     }
     
     @objc func connectBtn() {
+                
+        if let server = GlobalParameters.shared.selectServer,
+           SSConnect.shared.isVpnConnected() == false {
+            
+            connectView.setConnect(status: .connecting)
+            SSConnect.shared.startVpn(model: server)
+        }
+    }
+}
+
+
+// MARK: - VPN回调
+extension HomeController {
+    
+    @objc func SSConnectDidSuccessd() {
         
-        print("connectBtn")
-        let connectVC = ConnectStatusController()
-        navigationController?.pushViewController(connectVC, animated: true)
+        connectView.setConnect(status: .connect)
+        print("vpn - SSConnectDidSuccessd")
+    }
+    
+    @objc func SSConnectDidStop() {
+        
+        connectView.setConnect(status: .disconnect)
+        print("vpn - SSConnectDidStop")
+    }
+    
+    @objc func SSConnectFailed() {
+                
+        connectView.setConnect(status: .disconnect)
+        print("vpn - SSConnectFailed")
+    }
+    
+    @objc func SSConnectDurationDidChange() {
+                
+        print("vpn - SSConnectDurationDidChange")
     }
 }

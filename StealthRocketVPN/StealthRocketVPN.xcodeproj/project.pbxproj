@@ -44,12 +44,8 @@
 		E553DA0D2B3AA3F00091F4CE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA0C2B3AA3F00091F4CE /* NetworkExtension.framework */; };
 		E553DA102B3AA3F00091F4CE /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA0F2B3AA3F00091F4CE /* PacketTunnelProvider.swift */; };
 		E553DA152B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E553DA0B2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E553DA222B3AA6500091F4CE /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA212B3AA6500091F4CE /* Sentry.framework */; };
-		E553DA232B3AA6500091F4CE /* Sentry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA212B3AA6500091F4CE /* Sentry.framework */; };
 		E553DA252B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA242B3AA65B0091F4CE /* Tun2socks.framework */; };
 		E553DA262B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA242B3AA65B0091F4CE /* Tun2socks.framework */; };
-		E553DA282B3AA6710091F4CE /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA272B3AA6710091F4CE /* CocoaAsyncSocket.framework */; };
-		E553DA292B3AA6710091F4CE /* CocoaAsyncSocket.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA272B3AA6710091F4CE /* CocoaAsyncSocket.framework */; };
 		E553DA2B2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */; };
 		E553DA2C2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */; };
 		E553DA322B3AAAF40091F4CE /* Shadowsocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E553DA312B3AAAF40091F4CE /* Shadowsocks.m */; };
@@ -113,9 +109,7 @@
 		E553DA112B3AA3F00091F4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E553DA122B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StealthRocketNetworkExtentsion.entitlements; sourceTree = "<group>"; };
 		E553DA1A2B3AA5940091F4CE /* StealthRocketVPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StealthRocketVPN.entitlements; sourceTree = "<group>"; };
-		E553DA212B3AA6500091F4CE /* Sentry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sentry.framework; sourceTree = "<group>"; };
 		E553DA242B3AA65B0091F4CE /* Tun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Tun2socks.framework; sourceTree = "<group>"; };
-		E553DA272B3AA6710091F4CE /* CocoaAsyncSocket.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CocoaAsyncSocket.framework; sourceTree = "<group>"; };
 		E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Shadowsocks_iOS.framework; sourceTree = "<group>"; };
 		E553DA2F2B3AAAF40091F4CE /* StealthRocketNetworkExtentsion-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StealthRocketNetworkExtentsion-Bridging-Header.h"; sourceTree = "<group>"; };
 		E553DA302B3AAAF40091F4CE /* Shadowsocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shadowsocks.h; sourceTree = "<group>"; };
@@ -145,9 +139,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E553DA292B3AA6710091F4CE /* CocoaAsyncSocket.framework in Frameworks */,
 				E553DA2C2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */,
-				E553DA232B3AA6500091F4CE /* Sentry.framework in Frameworks */,
 				E553DA262B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */,
 				E553DA0D2B3AA3F00091F4CE /* NetworkExtension.framework in Frameworks */,
 				C0B5AFFC062E27CBE642AF64 /* Pods_StealthRocketNetworkExtentsion.framework in Frameworks */,
@@ -171,12 +163,10 @@
 				E53E0B9F2B35747D001E2529 /* FirebaseCrashlytics in Frameworks */,
 				E553DA252B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */,
 				E53E0BB72B35747D001E2529 /* FirebaseMLModelDownloader in Frameworks */,
-				E553DA282B3AA6710091F4CE /* CocoaAsyncSocket.framework in Frameworks */,
 				E53E0BA32B35747D001E2529 /* FirebaseDatabaseSwift in Frameworks */,
 				E53E0BA72B35747D001E2529 /* FirebaseFirestore in Frameworks */,
 				E53E0BB52B35747D001E2529 /* FirebaseInstallations in Frameworks */,
 				E53E0BAF2B35747D001E2529 /* FirebaseFunctionsCombine-Community in Frameworks */,
-				E553DA222B3AA6500091F4CE /* Sentry.framework in Frameworks */,
 				E53E0BA92B35747D001E2529 /* FirebaseFirestoreCombine-Community in Frameworks */,
 				E53E0BA12B35747D001E2529 /* FirebaseDatabase in Frameworks */,
 				E53E0BBB2B35747D001E2529 /* FirebasePerformance in Frameworks */,
@@ -246,9 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */,
-				E553DA272B3AA6710091F4CE /* CocoaAsyncSocket.framework */,
 				E553DA242B3AA65B0091F4CE /* Tun2socks.framework */,
-				E553DA212B3AA6500091F4CE /* Sentry.framework */,
 			);
 			path = SSLib;
 			sourceTree = "<group>";
@@ -300,7 +288,6 @@
 			isa = PBXGroup;
 			children = (
 				E553DA392B3AF49D0091F4CE /* SSConnect */,
-				E553DA1A2B3AA5940091F4CE /* StealthRocketVPN.entitlements */,
 				E53E0BD12B3A9F02001E2529 /* SSLib */,
 				E53E0BC72B358F10001E2529 /* GlobalParameters  */,
 				E53E0BC42B35756E001E2529 /* FirebaseConfig */,
@@ -311,6 +298,7 @@
 				E5D51FD52B33E52B004FBB84 /* Tools */,
 				E5D51FD22B33DAA8004FBB84 /* LaunchScreen */,
 				E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */,
+				E553DA1A2B3AA5940091F4CE /* StealthRocketVPN.entitlements */,
 				E53E0BCC2B396145001E2529 /* GoogleService-Info.plist */,
 				E5C0E3562B331DBD0060CF4F /* Assets.xcassets */,
 				E5C0E35B2B331DBD0060CF4F /* Info.plist */,
@@ -829,6 +817,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketVPN;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -884,6 +873,7 @@
 				INFOPLIST_KEY_CFBundleDisplayName = StealthRocketVPN;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

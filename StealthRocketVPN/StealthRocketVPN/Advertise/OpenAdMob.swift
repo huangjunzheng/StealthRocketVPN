@@ -47,8 +47,7 @@ class OpenAdMob: NSObject {
                 if self.didTry {
                     // 重试后还是失败
                     self.didTry = false
-                    self.cacheAd = nil
-                    self.loadADDate = nil
+                    self.clearCache()
                     complete?(false)
                 }else {
                     // 重试请求
@@ -69,8 +68,7 @@ class OpenAdMob: NSObject {
                 if self.didTry {
                     // 重试后还是失败
                     self.didTry = false
-                    self.cacheAd = nil
-                    self.loadADDate = nil
+                    self.clearCache()
                     complete?(false)
                 }else {
                     // 重试请求
@@ -92,6 +90,12 @@ class OpenAdMob: NSObject {
             complete?()
         }
     }
+    
+    func clearCache() {
+        
+        cacheAd = nil
+        loadADDate = nil
+    }
 }
 
 
@@ -99,16 +103,13 @@ extension OpenAdMob: GADFullScreenContentDelegate {
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         
+        clearCache()
         didShowComplete?()
     }
 
-//    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
-//        
-//        didShowComplete?()
-//    }
-    
-    func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         
+        clearCache()
         didShowComplete?()
     }
 }
