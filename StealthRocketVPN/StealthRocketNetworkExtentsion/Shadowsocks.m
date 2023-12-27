@@ -29,7 +29,8 @@
     
     NSLog(@"extentsion - startWithModel model:%@", model);
     if (_ssLocalThreadId != 0) {
-        return completion(false);
+        completion(NO);
+        return;
     }
     self.model = model;
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -68,7 +69,7 @@ void shadowsocksCallback(int socks_fd, int udp_fd, void *udata) {
         return;
     }
     Shadowsocks *ss = (__bridge Shadowsocks *)udata;
-    ss.startCompletion(YES);
+    [ss startCompletion:YES];
 }
 
 - (void)startShadowsocksThread {
@@ -77,24 +78,22 @@ void shadowsocksCallback(int socks_fd, int udp_fd, void *udata) {
     pthread_attr_t attr;
     int err = pthread_attr_init(&attr);
     if (err) {
-        
-        self.startCompletion(false);
+        [self startCompletion:NO];
         return;
     }
     err = pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
     if (err) {
-        
-        self.startCompletion(false);
+        [self startCompletion:NO];
         return;
     }
     err = pthread_create(&_ssLocalThreadId, &attr, &startShadowsocks, (__bridge void *)self);
     if (err) {
-        
-        self.startCompletion(false);
+        [self startCompletion:NO];
+        return;
     }
     err = pthread_attr_destroy(&attr);
     if (err) {
-        self.startCompletion(false);
+        [self startCompletion:NO];
         return;
     }
 }
@@ -103,7 +102,7 @@ void shadowsocksCallback(int socks_fd, int udp_fd, void *udata) {
     
     NSLog(@"extentsion - startShadowsocks");
     if (self.model == nil) {
-        self.startCompletion(false);
+        [self startCompletion:NO];
         return;
     }
     int port = [self.model.port intValue];
@@ -128,13 +127,20 @@ void shadowsocksCallback(int socks_fd, int udp_fd, void *udata) {
     NSLog(@"extentsion - start_ss_local_server_with_callback success: %d", success);
     if (success < 0) {
         
-        self.startCompletion(NO);
+        [self startCompletion:NO];
         return;
     }
     if (self.stopCompletion) {
-        
         self.stopCompletion();
         self.stopCompletion = nil;
+    }
+}
+
+- (void)startCompletion:(BOOL)isSuccess {
+    
+    if (self.startCompletion) {
+        self.startCompletion(isSuccess);
+        self.startCompletion = nil;
     }
 }
 

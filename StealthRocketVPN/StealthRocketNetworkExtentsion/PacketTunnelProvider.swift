@@ -37,12 +37,12 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
            let json = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers),
            let dic = json as? [String:Any] {
             
-            print("extentsion - startTunnel dic:\(dic)")
+            NSLog("extentsion - startTunnel dic:\(dic)")
             startCompletion = completionHandler
             let model = ConnectModel(dic: dic)
             ss.start(with: model) { [weak self] isSuccess in
                 
-                print("extentsion - ss.start isSuccess:\(isSuccess)")
+                NSLog("extentsion - ss.start isSuccess:\(isSuccess)")
                 guard let self = self else { return }
                 if isSuccess {
                     
@@ -58,7 +58,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     
                     self.setTunnelNetworkSettings(setting) { [weak self] err in
                         
-                        print("extentsion - setTunnelNetworkSettings err:\(String(describing: err))")
+                        NSLog("extentsion - setTunnelNetworkSettings err:\(String(describing: err))")
                         guard let self = self else { return }
                         if let err = err {
                             self.execAppCallback(isStart: true, error: err)
@@ -73,6 +73,19 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                                 self.execAppCallback(isStart: true, error: nil)
                                 return
                             }
+//                            self.isTunnelConnected = true
+//                            TunnelInterface.setup(with: self.packetFlow)
+//                            TunnelInterface.setIsUdpForwardingEnabled(false)
+//                            TunnelInterface.startTun2Socks(Int32(9999))
+//                            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
+//                                DispatchQueue.main.async {
+//                                    TunnelInterface.processPackets()
+//                                }
+//                            }
+                            
+                            
+                            
+                            
                             Tun2socksStartSocks(self, "127.0.0.1", 9999)
                             self.isTunnelConnected = true
                             DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
@@ -82,6 +95,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                                     Thread.detachNewThreadSelector(#selector(processInboundPackets), toTarget: self, with: nil)
                                 }
                             }
+                            
                             self.execAppCallback(isStart: true, error: nil)
                             wormhole.passMessageObject(NSDictionary(dictionary: ["VPNState" : 1]), identifier: VPNStateNotify)
                         }
@@ -97,7 +111,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         
-        print("extentsion - stopTunnel")
+        NSLog("extentsion - stopTunnel")
         stopCompletion = completionHandler
         ss.stop { [weak self] in
             
@@ -121,7 +135,7 @@ extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
 
     @objc func processInboundPackets() {
         
-        print("extentsion - processInboundPackets)")
+        NSLog("extentsion - processInboundPackets)")
         packetFlow.readPackets { packets, protocols in
             
             for pack in packets {
@@ -137,7 +151,7 @@ extension PacketTunnelProvider: Tun2socksPacketFlowProtocol {
     // MARK: - App IPC
     func execAppCallback(isStart: Bool, error: Error?) {
         
-        print("extentsion - execAppCallback isStart: \(isStart), error: \(String(describing: error))")
+        NSLog("extentsion - execAppCallback isStart: \(isStart), error: \(String(describing: error))")
         if isStart == true && startCompletion != nil {
             
             startCompletion?(error)

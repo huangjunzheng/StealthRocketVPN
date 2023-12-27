@@ -23,6 +23,11 @@ class HomeController: UIViewController {
     
     let setttingView = HomeSettingView()
     
+    let globalParameters = GlobalParameters.shared
+    
+    let ssConnect = SSConnect.shared
+    
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -38,8 +43,8 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if GlobalParameters.shared.selectServer == nil {
-            GlobalParameters.shared.selectServer = GlobalParameters.shared.serverArr.first
+        if globalParameters.selectServer == nil {
+            globalParameters.selectServer = globalParameters.serverArr.first
         }
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDidSuccessd), name: SSConnectDidSuccessdKey, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDidStop), name: SSConnectDidStopKey, object: nil)
@@ -138,12 +143,16 @@ extension HomeController {
     }
     
     @objc func connectBtn() {
-                
-        if let server = GlobalParameters.shared.selectServer,
-           SSConnect.shared.isVpnConnected() == false {
+        
+        guard let server = GlobalParameters.shared.selectServer else { return }
+        if ssConnect.isVpnConnected() == false {
             
             connectView.setConnect(status: .connecting)
-            SSConnect.shared.startVpn(model: server)
+            ssConnect.startVpn(model: server)
+        }else {
+            
+            connectView.setConnect(status: .connecting)
+            ssConnect.stopVPN()
         }
     }
 }
