@@ -27,6 +27,8 @@ class HomeController: UIViewController {
     
     let ssConnect = SSConnect.shared
     
+    // 是否已经完成插屏广告
+    var didShowInterstitialAd = false
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,9 +48,7 @@ class HomeController: UIViewController {
         if globalParameters.selectServer == nil {
             globalParameters.selectServer = globalParameters.serverArr.first
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDidSuccessd), name: SSConnectDidSuccessdKey, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDidStop), name: SSConnectDidStopKey, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(SSConnectFailed), name: SSConnectFailedKey, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(SSConnectStatusDidChange), name: SSConnectStatusDidChangeKey, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDurationDidChange), name: SSConnectDurationDidChangeKey, object: nil)
         setupView()
     }
@@ -85,12 +85,8 @@ class HomeController: UIViewController {
             make.top.equalTo(connectStatusImg.snp.bottom).offset(20)
             make.centerX.equalToSuperview()
         }
-                
-        if SSConnect.shared.isVpnConnected() {
-            connectView.setConnect(status: .connect)
-        }else {
-            connectView.setConnect(status: .disconnect)
-        }
+
+        connectView.setConnect(status: ssConnect.status)
         connectView.connectBtn.addTarget(self, action: #selector(connectBtn), for: .touchUpInside)
         connectView.serverBtn.addTarget(self, action: #selector(serverBtn), for: .touchUpInside)
         view.addSubview(connectView)
@@ -145,14 +141,24 @@ extension HomeController {
     @objc func connectBtn() {
         
         guard let server = GlobalParameters.shared.selectServer else { return }
-        if ssConnect.isVpnConnected() == false {
+        didShowInterstitialAd = false
+        if ssConnect.status == .disconnect {
             
-            connectView.setConnect(status: .connecting)
+            // 连接vpn
             ssConnect.startVpn(model: server)
-        }else {
+        }else if ssConnect.status == .connected {
             
-            connectView.setConnect(status: .connecting)
+            // 断开vpn
             ssConnect.stopVPN()
+        }
+        connectView.setConnect(status: ssConnect.status)
+        InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
+            
+            self?.didShowInterstitialAd = true
+            guard let self = self,
+                  self.ssConnect.status != .processing else { return }
+            print("status - InterstitialAdMob:\(self.ssConnect.status)")
+            self.connectView.setConnect(status: self.ssConnect.status)
         }
     }
 }
@@ -161,26 +167,21 @@ extension HomeController {
 // MARK: - VPN回调
 extension HomeController {
     
-    @objc func SSConnectDidSuccessd() {
+    @objc func SSConnectStatusDidChange(sender: Notification) {
         
-        connectView.setConnect(status: .connect)
-        print("vpn - SSConnectDidSuccessd")
-    }
-    
-    @objc func SSConnectDidStop() {
-        
-        connectView.setConnect(status: .disconnect)
-        print("vpn - SSConnectDidStop")
-    }
-    
-    @objc func SSConnectFailed() {
-                
-        connectView.setConnect(status: .disconnect)
-        print("vpn - SSConnectFailed")
+        if let data = sender.userInfo?["status"] as? Int,
+           let status = VPNConnectStatus(rawValue: data) {
+            
+            // 插屏广告已经显示，可以显示按钮状态
+            print("status - SSConnectStatusDidChange:\(status)")
+            if didShowInterstitialAd {
+                connectView.setConnect(status: status)
+            }
+        }
     }
     
     @objc func SSConnectDurationDidChange() {
                 
-        print("vpn - SSConnectDurationDidChange")
+//        print("vpn - SSConnectDurationDidChange")
     }
 }

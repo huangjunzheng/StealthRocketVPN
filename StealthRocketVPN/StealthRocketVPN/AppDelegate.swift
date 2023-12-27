@@ -51,7 +51,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 FirebaseConfig.shared.fetchConfig { finish in
                     
+                    // 请求广告
                     HomeAdMob.shared.requestAd(complete: nil)
+                    InterstitialAdMob.shared.requestAd(complete: nil)
                     OpenAdMob.shared.requestAd { isSuccess in
                         
                         NotificationCenter.default.post(name: OpenLodingProgressDidChangeKey, object: nil, userInfo: ["progress": 1] as [String:Float])
@@ -81,7 +83,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     let openLodingVC = OpenLodingController()
                     root.topViewController?.navigationController?.pushViewController(openLodingVC, animated: false)
                     
+                    // 请求广告
                     HomeAdMob.shared.requestAd(complete: nil)
+                    InterstitialAdMob.shared.requestAd(complete: nil)
                     if OpenAdMob.shared.isEffective() {
                         
                         NotificationCenter.default.post(name: OpenLodingProgressDidChangeKey, object: nil, userInfo: ["progress": 1] as [String:Float])

@@ -7,13 +7,6 @@
 
 import UIKit
 
-enum HomeConnectViewStatus {
-    case connect
-    case connecting
-    case disconnect
-}
-
-
 class HomeConnectView: UIView {
     
     let serverBtn = UIButton(type: .custom)
@@ -23,7 +16,7 @@ class HomeConnectView: UIView {
     let switchImg = UIImageView(image: UIImage(named: "home-off"))
     
     let titleLab = UILabel()
-    
+        
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,22 +75,24 @@ class HomeConnectView: UIView {
     }
     
     
-    func setConnect(status: HomeConnectViewStatus) {
+    func setConnect(status: VPNConnectStatus) {
         
         switch status {
-        case .connect:
+        case .connected:
             stopContectingAnimation()
             titleLab.text = "Discontect"
             titleLab.textColor = UIColor(hex: "#FFDC30", alpha: 1)
             switchImg.image = UIImage(named: "home-on")
             connectBtn.layer.borderWidth = 1
+            connectBtn.isEnabled = true
                         
-        case .connecting:
+        case .processing:
             titleLab.text = "Contecting"
             titleLab.textColor = .white
             switchImg.image = UIImage(named: "home-contecting")
             connectBtn.layer.borderWidth = 0
             startContectingAnimation()
+            connectBtn.isEnabled = false
             
         case .disconnect:
             stopContectingAnimation()
@@ -105,6 +100,7 @@ class HomeConnectView: UIView {
             titleLab.textColor = .white
             switchImg.image = UIImage(named: "home-off")
             connectBtn.layer.borderWidth = 0
+            connectBtn.isEnabled = true
         }
     }
     

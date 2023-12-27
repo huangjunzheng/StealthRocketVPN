@@ -8,11 +8,19 @@
 import Foundation
 
 // Notification
-let OpenLodingProgressDidChangeKey = NSNotification.Name(rawValue: "OpenLodingProgressDidChangeKey") 
-let SSConnectFailedKey = NSNotification.Name(rawValue: "SSConnectFailedKey")
-let SSConnectDidSuccessdKey = NSNotification.Name(rawValue: "SSConnectDidSuccessdKey")
-let SSConnectDidStopKey = NSNotification.Name(rawValue: "SSConnectDidStopKey")
+let OpenLodingProgressDidChangeKey = NSNotification.Name(rawValue: "OpenLodingProgressDidChangeKey")
 let SSConnectDurationDidChangeKey = NSNotification.Name(rawValue: "SSConnectDurationDidChangeKey")
+let SSConnectStatusDidChangeKey = NSNotification.Name(rawValue: "SSConnectStatusDidChangeKey")
+
+
+
+// Enum
+enum VPNConnectStatus: Int {
+    case connected = 1
+    case processing = 2
+    case disconnect = 3
+}
+
 
 
 // Font

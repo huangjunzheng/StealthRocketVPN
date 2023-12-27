@@ -27,8 +27,20 @@ class SSConnect: NSObject {
     
     var willInBackTime: TimeInterval?
     
+    var status: VPNConnectStatus = .disconnect
+    
         
     func setupConfig() {
+        
+        let vpnStatus = tunnel.connection.status
+        if vpnStatus == .connected {
+            status = .connected
+        }else if vpnStatus == .connecting || vpnStatus == .reasserting || vpnStatus == .disconnecting {
+            status = .processing
+        }else {
+            status = .disconnect
+        }
+        NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
         
         NotificationCenter.default.addObserver(self, selector: #selector(onBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(become), name: UIApplication.willEnterForegroundNotification, object: nil)
@@ -47,19 +59,15 @@ class SSConnect: NSObject {
         }
         
         wormhole.listenForMessage(withIdentifier: "VPNConnectErrorNotify") { [weak self] data in
-            
+
             self?.connectFailed()
         }
     }
-    
-    func isVpnConnected() -> Bool {
 
-        let vpnStatus = tunnel.connection.status
-        return vpnStatus == .connected || vpnStatus == .connecting || vpnStatus == .reasserting
-    }
-    
     func startVpn(model: ServerModel) {
         
+        status = .processing
+        NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
         connectModel = model
         setTunnelProvider { error in
             
@@ -88,11 +96,15 @@ class SSConnect: NSObject {
     
     func stopVPN() {
         
+        status = .processing
+        NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
         let session: NETunnelProviderSession = tunnel.connection as! NETunnelProviderSession
         session.stopTunnel()
         tunnel.isOnDemandEnabled = false
         tunnel.saveToPreferences { error in
-            // todo
+            if error != nil {
+                self.connectFailed()
+            }
         }
         connectModel = nil
     }
@@ -102,7 +114,9 @@ class SSConnect: NSObject {
         NETunnelProviderManager.loadAllFromPreferences() { (managers, error) in
                         
             if let error = error {
-                return completion(error)
+                self.connectFailed()
+                completion(error)
+                return
             }
             
             if let manager = managers?.first {
@@ -119,7 +133,9 @@ class SSConnect: NSObject {
                 self.tunnel.saveToPreferences(completionHandler: { [weak self] error in
                     
                     if let error = error {
-                        return completion(error)
+                        self?.connectFailed()
+                        completion(error)
+                        return
                     }
                     self?.tunnel.loadFromPreferences(completionHandler: completion)
                 })
@@ -129,21 +145,24 @@ class SSConnect: NSObject {
     
     func connectFailed() {
         
+        status = .disconnect
         connectModel = nil
         cancelTimer()
-        NotificationCenter.default.post(name: SSConnectFailedKey, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
     }
     
     func connectDidSuccess() {
         
+        status = .connected
         startTimer()
-        NotificationCenter.default.post(name: SSConnectDidSuccessdKey, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
     }
     
     func connectDidStop() {
         
+        status = .disconnect
         cancelTimer()
-        NotificationCenter.default.post(name: SSConnectDidStopKey, object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
         connectModel = nil
     }
     
