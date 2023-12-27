@@ -13,7 +13,7 @@ class ConnectStatusController: UIViewController {
     
     let timeLab = UILabel()
     
-    let connectStatusImg = UIImageView(image: UIImage(named: "connect-on"))
+    let connectStatusImg = UIImageView()
     
     let countryView = UIView()
     
@@ -24,14 +24,13 @@ class ConnectStatusController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = UIColor(hex: "#111417", alpha: 1)
         navigationController?.navigationBar.standardAppearance.configureWithTransparentBackground()
         navigationController?.navigationBar.standardAppearance.titleTextAttributes = [
             .foregroundColor: UIColor.white,
             .font: UIFont.boldSystemFont(ofSize: 16)
         ]
-        navigationItem.title = NSLocalizedString("Connection Succeed", comment: "")
         
         let backItem = UIBarButtonItem(image: UIImage(named: "back-icon"), style: .done, target: self, action: #selector(backBtn))
         navigationItem.leftBarButtonItem = backItem
@@ -50,7 +49,7 @@ class ConnectStatusController: UIViewController {
         view.addSubview(timeLab)
         timeLab.snp.makeConstraints { make in
             
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(84)
+            make.top.equalTo(84)
             make.centerX.equalToSuperview()
         }
         
@@ -86,7 +85,7 @@ class ConnectStatusController: UIViewController {
         
         name.textAlignment = .left
         name.textColor = .white
-        name.font = UIFont(name: Semibold, size: 20)
+        name.font = UIFont(name: Semibold, size: 14)
         countryView.addSubview(name)
         name.snp.makeConstraints { make in
             
@@ -134,8 +133,30 @@ class ConnectStatusController: UIViewController {
         fastIcon.snp.makeConstraints { make in
             
             make.centerY.equalToSuperview()
-            make.trailing.equalTo(20)
+            make.trailing.equalTo(-20)
             make.size.equalTo(CGSize(width: 24, height: 24))
+        }
+        
+        update()
+    }
+    
+    func update() {
+        
+        if SSConnect.shared.status == .connected {
+            
+            navigationItem.title = NSLocalizedString("Connection Succeed", comment: "")
+            connectStatusImg.image = UIImage(named: "connect-on")
+        }else if SSConnect.shared.status == .disconnect {
+            
+            navigationItem.title = NSLocalizedString("Disconnection Succeed", comment: "")
+            connectStatusImg.image = UIImage(named: "connect-off")
+        }
+        if let model = GlobalParameters.shared.selectServer {
+            
+            name.text = model.ste_bili
+            let lowercasedString = model.ste_bili.lowercased()
+            let stringWithoutSpaces = lowercasedString.replacingOccurrences(of: " ", with: "")
+            flag.image = UIImage(named: stringWithoutSpaces)
         }
     }
     

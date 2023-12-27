@@ -83,9 +83,9 @@ extension ServerController: UITableViewDelegate, UITableViewDataSource {
             cell?.img.image = UIImage(named: "server-smart")
         }else {
             
-            let name = serverArr[indexPath.row]
-            cell?.titleLab.text = name.ste_bili
-            let lowercasedString = name.ste_bili.lowercased()
+            let model = serverArr[indexPath.row]
+            cell?.titleLab.text = model.ste_bili
+            let lowercasedString = model.ste_bili.lowercased()
             let stringWithoutSpaces = lowercasedString.replacingOccurrences(of: " ", with: "")
             cell?.img.image = UIImage(named: stringWithoutSpaces)
         }

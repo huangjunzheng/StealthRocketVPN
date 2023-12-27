@@ -11,7 +11,7 @@ class HomeController: UIViewController {
     
     let backImg = UIImageView(image: UIImage(named: "home-discontectback"))
     
-    let connectStatusImg = UIImageView(image: UIImage(named: "home-offImg"))
+    let connectStatusImg = UIImageView()
     
     let timeLab = UILabel()
     
@@ -71,7 +71,7 @@ class HomeController: UIViewController {
         view.addSubview(connectStatusImg)
         connectStatusImg.snp.makeConstraints { make in
             
-            make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(48)
+            make.top.equalTo(48)
             make.centerX.equalToSuperview()
             make.width.height.equalTo(260)
         }
@@ -86,7 +86,6 @@ class HomeController: UIViewController {
             make.centerX.equalToSuperview()
         }
 
-        connectView.setConnect(status: ssConnect.status)
         connectView.connectBtn.addTarget(self, action: #selector(connectBtn), for: .touchUpInside)
         connectView.serverBtn.addTarget(self, action: #selector(serverBtn), for: .touchUpInside)
         view.addSubview(connectView)
@@ -115,6 +114,18 @@ class HomeController: UIViewController {
             make.leading.equalTo(view.snp.centerX).offset(4)
             make.height.equalTo(138)
         }
+        
+        updateUI()
+    }
+    
+    func updateUI() {
+        
+        if ssConnect.status == .connected {
+            connectStatusImg.image = UIImage(named: "home-onImg")
+        }else {
+            connectStatusImg.image = UIImage(named: "home-offImg")
+        }
+        connectView.setConnect(status: ssConnect.status)
     }
 }
 
@@ -151,14 +162,17 @@ extension HomeController {
             // 断开vpn
             ssConnect.stopVPN()
         }
-        connectView.setConnect(status: ssConnect.status)
+        updateUI()
         InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
             
             self?.didShowInterstitialAd = true
             guard let self = self,
                   self.ssConnect.status != .processing else { return }
-            print("status - InterstitialAdMob:\(self.ssConnect.status)")
-            self.connectView.setConnect(status: self.ssConnect.status)
+            
+            self.updateUI()
+            
+            let vc = ConnectStatusController()
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
@@ -173,9 +187,11 @@ extension HomeController {
            let status = VPNConnectStatus(rawValue: data) {
             
             // 插屏广告已经显示，可以显示按钮状态
-            print("status - SSConnectStatusDidChange:\(status)")
-            if didShowInterstitialAd {
-                connectView.setConnect(status: status)
+            if didShowInterstitialAd && status != .processing {
+                
+                updateUI()
+                let vc = ConnectStatusController()
+                self.navigationController?.pushViewController(vc, animated: true)
             }
         }
     }
