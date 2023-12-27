@@ -36,6 +36,8 @@ class ConnectStatusController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDurationDidChange), name: SSConnectDurationDidChangeKey, object: nil)
+        
         view.backgroundColor = UIColor(hex: "#111417", alpha: 1)
         navigationController?.navigationBar.standardAppearance.configureWithTransparentBackground()
         navigationController?.navigationBar.standardAppearance.titleTextAttributes = [
@@ -180,5 +182,16 @@ class ConnectStatusController: UIViewController {
     @objc func fastBtnClick() {
         
         navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func SSConnectDurationDidChange(sender: Notification) {
+        
+        if let duration = sender.userInfo?["duration"] as? Double {
+            
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.second, .minute, .hour]
+            formatter.zeroFormattingBehavior = .pad
+            timeLab.text = formatter.string(from: TimeInterval(duration))
+        }
     }
 }

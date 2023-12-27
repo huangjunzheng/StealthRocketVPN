@@ -169,6 +169,7 @@ class SSConnect: NSObject {
     func startTimer() {
 
         cancelTimer()
+        if status == .processing { return }
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerDidStart), userInfo: nil, repeats: true)
         if let timer = timer {
             RunLoop.main.add(timer, forMode: .common)
@@ -196,6 +197,6 @@ class SSConnect: NSObject {
     @objc func become() {
         
         connectDuration = NSDate().timeIntervalSince1970 - (willInBackTime ?? 0)
-//        startTimer()
+        startTimer()
     }
 }

@@ -7,6 +7,7 @@
 
 import UIKit
 import MessageUI
+import AFNetworking
 
 class HomeController: UIViewController {
     
@@ -45,6 +46,16 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // 如果无网络则推出app
+        if AFNetworkReachabilityManager.shared().networkReachabilityStatus == .notReachable || AFNetworkReachabilityManager.shared().networkReachabilityStatus == .unknown {
+            
+            let alertController = UIAlertController(title: nil, message: "Network request timed out. Please make sure your network is connected", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        }
+        
         
         if globalParameters.selectServer == nil {
             globalParameters.selectServer = globalParameters.serverArr.first
@@ -246,8 +257,14 @@ extension HomeController {
         }
     }
     
-    @objc func SSConnectDurationDidChange() {
-                
-//        print("vpn - SSConnectDurationDidChange")
+    @objc func SSConnectDurationDidChange(sender: Notification) {
+        
+        if let duration = sender.userInfo?["duration"] as? Double {
+            
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.second, .minute, .hour]
+            formatter.zeroFormattingBehavior = .pad
+            timeLab.text = formatter.string(from: TimeInterval(duration))
+        }
     }
 }
