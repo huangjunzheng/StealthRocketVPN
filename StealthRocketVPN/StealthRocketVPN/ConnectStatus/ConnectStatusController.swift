@@ -21,6 +21,17 @@ class ConnectStatusController: UIViewController {
     
     let name = UILabel()
     
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        ResultAdMob.shared.show(vc: self) { isSuccess in
+            
+            if !isSuccess {
+                ResultAdMob.shared.requestAd(complete: nil)
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,12 +86,13 @@ class ConnectStatusController: UIViewController {
             make.width.greaterThanOrEqualTo(200)
         }
         
+        flag.contentMode = .scaleAspectFill
         countryView.addSubview(flag)
         flag.snp.makeConstraints { make in
             
-            make.centerY.equalToSuperview()
             make.leading.top.equalTo(6)
             make.bottom.equalTo(-6)
+            make.width.equalTo(flag.snp.height)
         }
         
         name.textAlignment = .left

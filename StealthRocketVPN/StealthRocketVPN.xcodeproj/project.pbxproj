@@ -54,6 +54,8 @@
 		E553DA3D2B3BF0520091F4CE /* HomeAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA3C2B3BF0520091F4CE /* HomeAdMob.swift */; };
 		E553DA3F2B3BF15B0091F4CE /* HomeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E553DA3E2B3BF15B0091F4CE /* HomeAdView.xib */; };
 		E553DA462B3C48080091F4CE /* InterstitialAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA452B3C48080091F4CE /* InterstitialAdMob.swift */; };
+		E553DA482B3C65C00091F4CE /* ResultAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA472B3C65C00091F4CE /* ResultAdMob.swift */; };
+		E553DA4A2B3C66050091F4CE /* ResultAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E553DA492B3C66050091F4CE /* ResultAdView.xib */; };
 		E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */; };
 		E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3562B331DBD0060CF4F /* Assets.xcassets */; };
 		E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */; };
@@ -123,6 +125,8 @@
 		E553DA3C2B3BF0520091F4CE /* HomeAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdMob.swift; sourceTree = "<group>"; };
 		E553DA3E2B3BF15B0091F4CE /* HomeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeAdView.xib; sourceTree = "<group>"; };
 		E553DA452B3C48080091F4CE /* InterstitialAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialAdMob.swift; sourceTree = "<group>"; };
+		E553DA472B3C65C00091F4CE /* ResultAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultAdMob.swift; sourceTree = "<group>"; };
+		E553DA492B3C66050091F4CE /* ResultAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultAdView.xib; sourceTree = "<group>"; };
 		E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthRocketVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5C0E3562B331DBD0060CF4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -348,6 +352,8 @@
 				E553DA3C2B3BF0520091F4CE /* HomeAdMob.swift */,
 				E553DA3E2B3BF15B0091F4CE /* HomeAdView.xib */,
 				E553DA452B3C48080091F4CE /* InterstitialAdMob.swift */,
+				E553DA472B3C65C00091F4CE /* ResultAdMob.swift */,
+				E553DA492B3C66050091F4CE /* ResultAdView.xib */,
 			);
 			path = Advertise;
 			sourceTree = "<group>";
@@ -490,6 +496,7 @@
 			files = (
 				E553DA3F2B3BF15B0091F4CE /* HomeAdView.xib in Resources */,
 				E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */,
+				E553DA4A2B3C66050091F4CE /* ResultAdView.xib in Resources */,
 				E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */,
 				E53E0BCD2B396145001E2529 /* GoogleService-Info.plist in Resources */,
 			);
@@ -590,6 +597,7 @@
 				E553DA3D2B3BF0520091F4CE /* HomeAdMob.swift in Sources */,
 				E553DA3B2B3AF4D80091F4CE /* SSConnect.swift in Sources */,
 				E53E0BC62B3575AF001E2529 /* FirebaseConfig.swift in Sources */,
+				E553DA482B3C65C00091F4CE /* ResultAdMob.swift in Sources */,
 				E5D51FED2B3467F0004FBB84 /* HomeSettingView.swift in Sources */,
 				E53E0BCB2B392048001E2529 /* ServerModel.swift in Sources */,
 				E53E0B8C2B353250001E2529 /* ConnectStatusController.swift in Sources */,

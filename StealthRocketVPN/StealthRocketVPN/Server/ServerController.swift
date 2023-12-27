@@ -95,5 +95,10 @@ extension ServerController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         GlobalParameters.shared.selectServer = serverArr[indexPath.row]
+        // 展示插屏广告
+        InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
+            
+            self?.navigationController?.popViewController(animated: true)
+        }
     }
 }

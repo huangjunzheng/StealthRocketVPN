@@ -53,6 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     // 请求广告
                     HomeAdMob.shared.requestAd(complete: nil)
+                    ResultAdMob.shared.requestAd(complete: nil)
                     InterstitialAdMob.shared.requestAd(complete: nil)
                     OpenAdMob.shared.requestAd { isSuccess in
                         
@@ -85,6 +86,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     // 请求广告
                     HomeAdMob.shared.requestAd(complete: nil)
+                    if !ResultAdMob.shared.isEffective() {
+                        ResultAdMob.shared.requestAd(complete: nil)
+                    }
                     InterstitialAdMob.shared.requestAd(complete: nil)
                     if OpenAdMob.shared.isEffective() {
                         

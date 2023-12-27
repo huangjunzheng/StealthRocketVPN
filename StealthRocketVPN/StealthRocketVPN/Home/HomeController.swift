@@ -73,7 +73,7 @@ class HomeController: UIViewController {
             
             make.top.equalTo(48)
             make.centerX.equalToSuperview()
-            make.width.height.equalTo(260)
+            make.width.height.equalTo(250)
         }
         
         timeLab.textColor = .white
@@ -91,7 +91,7 @@ class HomeController: UIViewController {
         view.addSubview(connectView)
         connectView.snp.makeConstraints { make in
             
-            make.top.equalTo(timeLab.snp.bottom).offset(28)
+            make.top.equalTo(timeLab.snp.bottom).offset(20)
             make.leading.equalTo(12)
             make.trailing.equalTo(-12)
             make.height.equalTo(76)
@@ -103,7 +103,7 @@ class HomeController: UIViewController {
             make.top.equalTo(connectView.snp.bottom).offset(20)
             make.leading.equalTo(12)
             make.trailing.equalTo(view.snp.centerX).offset(-4)
-            make.height.equalTo(138)
+            make.height.equalTo(112)
         }
         
         view.addSubview(upload)
@@ -112,7 +112,7 @@ class HomeController: UIViewController {
             make.top.equalTo(connectView.snp.bottom).offset(20)
             make.trailing.equalTo(-12)
             make.leading.equalTo(view.snp.centerX).offset(4)
-            make.height.equalTo(138)
+            make.height.equalTo(112)
         }
         
         updateUI()
@@ -163,6 +163,9 @@ extension HomeController {
             ssConnect.stopVPN()
         }
         updateUI()
+        // 请求结果页广告
+        ResultAdMob.shared.requestAd(complete: nil)
+        // 展示插屏广告
         InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
             
             self?.didShowInterstitialAd = true
