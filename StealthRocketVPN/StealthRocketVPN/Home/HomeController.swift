@@ -47,6 +47,19 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        RestrictUse.shared.isRestrictUse { [weak self] canUse in
+            
+            if !canUse {
+                
+                let alertController = UIAlertController(title: nil, message: "Due to the policy reason , this service is not available in your country", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Confirm", style: .default) { action in
+                    exit(0)
+                }
+                alertController.addAction(okAction)
+                self?.present(alertController, animated: true, completion: nil)
+            }
+        }
+        
         // 如果无网络则推出app
         if AFNetworkReachabilityManager.shared().networkReachabilityStatus == .notReachable || AFNetworkReachabilityManager.shared().networkReachabilityStatus == .unknown {
             

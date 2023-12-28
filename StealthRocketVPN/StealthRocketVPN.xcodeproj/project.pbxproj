@@ -57,6 +57,7 @@
 		E553DA482B3C65C00091F4CE /* ResultAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA472B3C65C00091F4CE /* ResultAdMob.swift */; };
 		E553DA4A2B3C66050091F4CE /* ResultAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E553DA492B3C66050091F4CE /* ResultAdView.xib */; };
 		E553DA4D2B3C702A0091F4CE /* BasisWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA4C2B3C702A0091F4CE /* BasisWebView.swift */; };
+		E553DA502B3D05300091F4CE /* RestrictUse.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA4F2B3D05300091F4CE /* RestrictUse.swift */; };
 		E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */; };
 		E5C0E3572B331DBD0060CF4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3562B331DBD0060CF4F /* Assets.xcassets */; };
 		E5C0E35A2B331DBD0060CF4F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5C0E3582B331DBD0060CF4F /* LaunchScreen.storyboard */; };
@@ -129,6 +130,7 @@
 		E553DA472B3C65C00091F4CE /* ResultAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultAdMob.swift; sourceTree = "<group>"; };
 		E553DA492B3C66050091F4CE /* ResultAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResultAdView.xib; sourceTree = "<group>"; };
 		E553DA4C2B3C702A0091F4CE /* BasisWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasisWebView.swift; sourceTree = "<group>"; };
+		E553DA4F2B3D05300091F4CE /* RestrictUse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestrictUse.swift; sourceTree = "<group>"; };
 		E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StealthRocketVPN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5C0E34D2B331DBC0060CF4F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E5C0E3562B331DBD0060CF4F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -284,6 +286,14 @@
 			path = WebView;
 			sourceTree = "<group>";
 		};
+		E553DA4E2B3D04FA0091F4CE /* RestrictUse */ = {
+			isa = PBXGroup;
+			children = (
+				E553DA4F2B3D05300091F4CE /* RestrictUse.swift */,
+			);
+			path = RestrictUse;
+			sourceTree = "<group>";
+		};
 		E5C0E3412B331DBC0060CF4F = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +317,7 @@
 		E5C0E34C2B331DBC0060CF4F /* StealthRocketVPN */ = {
 			isa = PBXGroup;
 			children = (
+				E553DA4E2B3D04FA0091F4CE /* RestrictUse */,
 				E553DA4B2B3C6FB00091F4CE /* WebView */,
 				E553DA392B3AF49D0091F4CE /* SSConnect */,
 				E53E0BD12B3A9F02001E2529 /* SSLib */,
@@ -604,6 +615,7 @@
 				E5D51FEB2B345FB0004FBB84 /* ServerCell.swift in Sources */,
 				E5D51FD72B33E567004FBB84 /* ColorHex.swift in Sources */,
 				E5D51FDC2B340A09004FBB84 /* ConstantFile.swift in Sources */,
+				E553DA502B3D05300091F4CE /* RestrictUse.swift in Sources */,
 				E5D51FE42B3421E6004FBB84 /* HomeConnectView.swift in Sources */,
 				E5C0E34E2B331DBC0060CF4F /* AppDelegate.swift in Sources */,
 				E553DA3D2B3BF0520091F4CE /* HomeAdMob.swift in Sources */,

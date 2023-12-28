@@ -38,4 +38,7 @@ class GlobalParameters: NSObject {
     
     // 插屏广告id
     var taskAdId = ""
+    
+    
+    
 }

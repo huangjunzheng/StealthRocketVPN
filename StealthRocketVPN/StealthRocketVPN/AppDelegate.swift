@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         SSConnect.shared.setupConfig()
-        
+
         AFNetworkReachabilityManager.shared().setReachabilityStatusChange { status in
             
             if status == .reachableViaWWAN || status == .reachableViaWiFi {

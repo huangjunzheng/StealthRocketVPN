@@ -40,29 +40,48 @@ class FirebaseConfig: NSObject {
     func fetchAdConfig() {
         
         guard let json = RemoteConfig.remoteConfig().configValue(forKey: "stl").jsonValue as? [String:Any] else {
+            
+            if let cacheJson = UserDefaults.standard.dictionary(forKey: CacheRemoteAdkey) {
+                globalParameters.tureAdId = cacheJson["stl_ture"] as? String ?? ""
+                globalParameters.issuAdId = cacheJson["stl_issu"] as? String ?? ""
+                globalParameters.dormieAdId = cacheJson["stl_dormie"] as? String ?? ""
+                globalParameters.taskAdId = cacheJson["stl_task"] as? String ?? ""
+            }
             return
         }
+        
         globalParameters.tureAdId = json["stl_ture"] as? String ?? ""
         globalParameters.issuAdId = json["stl_issu"] as? String ?? ""
         globalParameters.dormieAdId = json["stl_dormie"] as? String ?? ""
         globalParameters.taskAdId = json["stl_task"] as? String ?? ""
+        UserDefaults.standard.set(json, forKey: CacheRemoteAdkey)
     }
     
     func fetchSmartConfig() {
         
         guard let arr = RemoteConfig.remoteConfig().configValue(forKey: "sta").jsonValue as? [String] else {
+            
+            if let cacheArr = UserDefaults.standard.array(forKey: CacheRemoteSmartkey) as? [String] {
+                globalParameters.smartArr = cacheArr
+            }
             return
         }
         globalParameters.smartArr = arr
+        UserDefaults.standard.set(arr, forKey: CacheRemoteSmartkey)
     }
     
     func fetchServerConfig() {
         
 //        guard let json = RemoteConfig.remoteConfig().configValue(forKey: "ste").jsonValue,
 //              let arr = NSArray.yy_modelArray(with: ServerModel.self, json: json) as? [ServerModel] else {
+//            
+//            if let cacheArr = UserDefaults.standard.array(forKey: CacheRemoteServerkey) as? [ServerModel] {
+//                globalParameters.serverArr = cacheArr
+//            }
 //            return
 //        }
 //        globalParameters.serverArr = arr
+//        UserDefaults.standard.set(arr, forKey: CacheRemoteServerkey)
         
         
         // test

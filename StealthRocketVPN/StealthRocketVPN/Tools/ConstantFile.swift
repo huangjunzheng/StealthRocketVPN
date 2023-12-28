@@ -29,3 +29,9 @@ let Medium = "PingFangSC-Medium"    // 中黑
 let Regular = "PingFangSC-Regular"  // 常规
 let Semibold = "PingFangSC-Semibold"// 中粗
 let Thin = "PingFangSC-Thin"        // 极细
+
+
+// UserDefaults
+let CacheRemoteAdkey = "CacheRemoteAdkey"
+let CacheRemoteSmartkey = "CacheRemoteSmartkey"
+let CacheRemoteServerkey = "CacheRemoteServerkey"
