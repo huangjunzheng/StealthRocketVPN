@@ -25,7 +25,7 @@ class SSConnect: NSObject {
     
     var connectDuration: Double = 0
     
-    var willInBackTime: TimeInterval?
+    var tagTime: TimeInterval?
     
     var status: VPNConnectStatus = .disconnect
     
@@ -147,28 +147,30 @@ class SSConnect: NSObject {
         
         status = .disconnect
         connectModel = nil
-        cancelTimer()
+        stopTimer()
         NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
     }
     
     func connectDidSuccess() {
         
         status = .connected
-        startTimer()
+        tagTime = Date().timeIntervalSince1970
+        connectDuration = 0
+        openTimer()
         NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
     }
     
     func connectDidStop() {
         
         status = .disconnect
-        cancelTimer()
+        stopTimer()
         NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
         connectModel = nil
     }
     
-    func startTimer() {
+    func openTimer() {
 
-        cancelTimer()
+        stopTimer()
         if status == .processing { return }
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerDidStart), userInfo: nil, repeats: true)
         if let timer = timer {
@@ -176,7 +178,7 @@ class SSConnect: NSObject {
         }
     }
 
-    private func cancelTimer() {
+    private func stopTimer() {
 
         timer?.invalidate()
         timer = nil
@@ -190,13 +192,17 @@ class SSConnect: NSObject {
 
     @objc func onBackground() {
 
-        willInBackTime = NSDate().timeIntervalSince1970 - Double(connectDuration)
-        cancelTimer()
+        // 进入后台前，保存当前连接的时长
+        tagTime = NSDate().timeIntervalSince1970 - Double(connectDuration)
+        stopTimer()
     }
 
     @objc func become() {
         
-        connectDuration = NSDate().timeIntervalSince1970 - (willInBackTime ?? 0)
-        startTimer()
+        // 返回app时，更新连接市场
+        if status == .connected {
+            connectDuration = NSDate().timeIntervalSince1970 - (tagTime ?? 0)
+            openTimer()
+        }
     }
 }

@@ -288,7 +288,8 @@ extension HomeController {
     
     @objc func SSConnectDurationDidChange(sender: Notification) {
         
-        if let duration = sender.userInfo?["duration"] as? Double {
+        if let duration = sender.userInfo?["duration"] as? Double,
+           ssConnect.status != .processing {
             
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.second, .minute, .hour]

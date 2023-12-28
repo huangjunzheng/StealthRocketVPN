@@ -57,10 +57,12 @@ class ConnectStatusController: UIViewController {
             make.leading.equalTo(15)
             make.height.equalTo(backImg.snp.width)
         }
-        
+        let formatter = DateComponentsFormatter()
+        formatter.allowedUnits = [.second, .minute, .hour]
+        formatter.zeroFormattingBehavior = .pad
+        timeLab.text = formatter.string(from: TimeInterval(SSConnect.shared.connectDuration))
         timeLab.textColor = .white
         timeLab.font = UIFont(name: Regular, size: 24)
-        timeLab.text = "00:00:00"
         view.addSubview(timeLab)
         timeLab.snp.makeConstraints { make in
             
@@ -167,13 +169,11 @@ class ConnectStatusController: UIViewController {
             navigationItem.title = NSLocalizedString("Disconnection Succeed", comment: "")
             connectStatusImg.image = UIImage(named: "connect-off")
         }
-        if let model = GlobalParameters.shared.selectServer {
-            
-            name.text = model.ste_bili
-            let lowercasedString = model.ste_bili.lowercased()
-            let stringWithoutSpaces = lowercasedString.replacingOccurrences(of: " ", with: "")
-            flag.image = UIImage(named: stringWithoutSpaces)
-        }
+        let model = GlobalParameters.shared.selectServer
+        name.text = model.ste_bili
+        let lowercasedString = model.ste_bili.lowercased()
+        let stringWithoutSpaces = lowercasedString.replacingOccurrences(of: " ", with: "")
+        flag.image = UIImage(named: stringWithoutSpaces)
     }
     
     @objc func backBtn() {

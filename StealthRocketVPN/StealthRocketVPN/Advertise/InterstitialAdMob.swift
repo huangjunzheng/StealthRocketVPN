@@ -71,7 +71,8 @@ class InterstitialAdMob: NSObject {
                     self?.cacheAd?.present(fromRootViewController: vc)
                 }else{
                     
-                    complete?(false)
+                    self?.didShowComplete?(false)
+                    self?.didShowComplete = nil
                 }
             }
         }
@@ -93,7 +94,9 @@ class InterstitialAdMob: NSObject {
             self.count += 1
             if self.count > 10 {
                 
+                stopTime()
                 self.didShowComplete?(false)
+                self.didShowComplete = nil
             }
         })
         if let lodingTimer = lodingTimer {
@@ -118,12 +121,14 @@ extension InterstitialAdMob: GADFullScreenContentDelegate {
         
         clearCache()
         didShowComplete?(true)
+        didShowComplete = nil
     }
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         
         clearCache()
         didShowComplete?(false)
+        didShowComplete = nil
     }
     
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
