@@ -38,9 +38,9 @@ class HomeAdMob: NSObject {
     }
     
     func requestAd(complete: ((Bool) -> Void)?) {
-        
+//        ca-app-pub-3940256099942544/3986624511
         loadComplete = complete
-        loader = GADAdLoader(adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: nil, adTypes: [.native], options: nil)
+        loader = GADAdLoader(adUnitID: "", rootViewController: nil, adTypes: [.native], options: nil)
         if let loader = loader,
            loader.isLoading == false {
             loader.delegate = self

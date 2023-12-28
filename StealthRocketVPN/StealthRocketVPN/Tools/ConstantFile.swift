@@ -35,3 +35,4 @@ let Thin = "PingFangSC-Thin"        // 极细
 let CacheRemoteAdkey = "CacheRemoteAdkey"
 let CacheRemoteSmartkey = "CacheRemoteSmartkey"
 let CacheRemoteServerkey = "CacheRemoteServerkey"
+let CacheDidConnectServerkey = "CacheDidConnectServerkey"

@@ -11,7 +11,7 @@ class ServerController: UIViewController, UIGestureRecognizerDelegate {
     
     let tabbleView = UITableView(frame: .zero, style: .grouped)
     
-    var serverArr = [ServerModel]()
+    var serverList = GlobalParameters.shared.serverList
     
     var didSelect: (() -> Void)?
     
@@ -22,21 +22,6 @@ class ServerController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        serverArr.append(contentsOf: GlobalParameters.shared.serverArr)
-        // 添加smart
-        if GlobalParameters.shared.smartArr.count > 0 {
-            
-            let model = GlobalParameters.shared.serverArr.first
-            let smartModel = ServerModel()
-            smartModel.ste_pisi = model?.ste_pisi ?? ""
-            smartModel.ste_tude = model?.ste_tude ?? ""
-            smartModel.ste_vagm = model?.ste_vagm ?? ""
-            smartModel.ste_bili = "Super Fast Servers"
-            smartModel.ste_dicics = "Super Fast Servers"
-            smartModel.ste_home = GlobalParameters.shared.smartArr.first ?? ""
-            serverArr.insert(smartModel, at: 0)
-        }
 
         view.backgroundColor = UIColor(hex: "#111417", alpha: 1)
         navigationController?.navigationBar.standardAppearance.configureWithTransparentBackground()
@@ -65,12 +50,9 @@ class ServerController: UIViewController, UIGestureRecognizerDelegate {
             make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom)
         }
         
-        var indexPath = IndexPath(row: 0, section: 0)
-        if let selectServer = GlobalParameters.shared.selectServer,
-           let index = GlobalParameters.shared.serverArr.firstIndex(of: selectServer) {
-            indexPath = IndexPath(row: index, section: 0)
-        }
-        tabbleView.selectRow(at: indexPath, animated: true, scrollPosition: .none)
+        let currentServer = GlobalParameters.shared.currentServer
+        let index = GlobalParameters.shared.serverList.firstIndex(of: currentServer) ?? 0
+        tabbleView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .none)
     }
     
     @objc func backBtn() {
@@ -84,24 +66,31 @@ extension ServerController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        serverArr.count
+        return serverList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: ServerCellKey, for: indexPath) as? ServerCell
-        let model = serverArr[indexPath.row]
-        cell?.titleLab.text = model.ste_bili
-        let lowercasedString = model.ste_bili.lowercased()
-        let stringWithoutSpaces = lowercasedString.replacingOccurrences(of: " ", with: "")
-        cell?.img.image = UIImage(named: stringWithoutSpaces)
+        let model = serverList[indexPath.row]
+        if model.ste_bili == "smart" {
+            
+            cell?.titleLab.text = "Super Fast Servers"
+            cell?.img.image = UIImage(named: "server-smart")
+        }else {
+            
+            cell?.titleLab.text = model.ste_bili
+            let lowercasedString = model.ste_bili.lowercased()
+            let stringWithoutSpaces = lowercasedString.replacingOccurrences(of: " ", with: "")
+            cell?.img.image = UIImage(named: stringWithoutSpaces)
+        }
         return cell ?? UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        GlobalParameters.shared.currentServer = serverList[indexPath.row]
         didSelect?()
-        GlobalParameters.shared.selectServer = serverArr[indexPath.row]
         // 展示插屏广告
         InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
             

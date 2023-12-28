@@ -169,11 +169,17 @@ class ConnectStatusController: UIViewController {
             navigationItem.title = NSLocalizedString("Disconnection Succeed", comment: "")
             connectStatusImg.image = UIImage(named: "connect-off")
         }
-        let model = GlobalParameters.shared.selectServer
-        name.text = model.ste_bili
-        let lowercasedString = model.ste_bili.lowercased()
-        let stringWithoutSpaces = lowercasedString.replacingOccurrences(of: " ", with: "")
-        flag.image = UIImage(named: stringWithoutSpaces)
+        
+        let model = GlobalParameters.shared.currentServer
+        if model.ste_bili == "smart" {
+            name.text = "Super Fast Servers"
+            flag.image = UIImage(named: "server-smart")
+        }else {
+            name.text = model.ste_bili
+            let lowercasedString = model.ste_bili.lowercased()
+            let stringWithoutSpaces = lowercasedString.replacingOccurrences(of: " ", with: "")
+            flag.image = UIImage(named: stringWithoutSpaces)
+        }
     }
     
     @objc func backBtn() {
@@ -182,19 +188,8 @@ class ConnectStatusController: UIViewController {
     }
     
     @objc func fastBtnClick() {
-        
-        if GlobalParameters.shared.smartArr.count > 0 {
-            
-            let model = GlobalParameters.shared.serverArr.first
-            let smartModel = ServerModel()
-            smartModel.ste_pisi = model?.ste_pisi ?? ""
-            smartModel.ste_tude = model?.ste_tude ?? ""
-            smartModel.ste_vagm = model?.ste_vagm ?? ""
-            smartModel.ste_bili = "Super Fast Servers"
-            smartModel.ste_dicics = "Super Fast Servers"
-            smartModel.ste_home = GlobalParameters.shared.smartArr.first ?? ""
-            GlobalParameters.shared.selectServer = smartModel
-        }
+
+        GlobalParameters.shared.currentServer = GlobalParameters.shared.getSmart()
         didSelectSmart?()
         navigationController?.popViewController(animated: true)
     }

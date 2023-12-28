@@ -157,6 +157,8 @@ class SSConnect: NSObject {
         tagTime = Date().timeIntervalSince1970
         connectDuration = 0
         openTimer()
+        // 连接成功时缓存当前服务器
+        GlobalParameters.shared.cacheDidConnectServer()
         NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
     }
     

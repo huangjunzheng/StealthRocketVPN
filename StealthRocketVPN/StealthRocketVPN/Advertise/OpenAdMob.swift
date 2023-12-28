@@ -34,8 +34,8 @@ class OpenAdMob: NSObject {
     }
     
     func requestAd(complete: ((Bool) -> Void)?) {
-        
-        GADAppOpenAd.load(withAdUnitID: "ca-app-pub-3940256099942544/5575463023", request: nil) { [weak self] ad, err in
+//        ca-app-pub-3940256099942544/5575463023
+        GADAppOpenAd.load(withAdUnitID: "", request: nil) { [weak self] ad, err in
             
             guard let self = self else {
                 self?.didTry = false

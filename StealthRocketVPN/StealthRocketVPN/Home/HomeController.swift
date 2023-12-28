@@ -70,10 +70,6 @@ class HomeController: UIViewController {
             present(alertController, animated: true, completion: nil)
         }
         
-        
-        if globalParameters.selectServer == nil {
-            globalParameters.selectServer = globalParameters.serverArr.first
-        }
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectStatusDidChange), name: SSConnectStatusDidChangeKey, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDurationDidChange), name: SSConnectDurationDidChangeKey, object: nil)
         setupView()
@@ -185,11 +181,15 @@ extension HomeController: MFMailComposeViewControllerDelegate {
     
     @objc func connectBtn() {
         
-        guard let server = GlobalParameters.shared.selectServer else { return }
         didShowInterstitialAd = false
         if ssConnect.status == .disconnect {
             
             // 连接vpn
+            var server = GlobalParameters.shared.currentServer
+            if GlobalParameters.shared.currentServer.ste_bili == "smart" {
+                // 使用smart
+                server = GlobalParameters.shared.getSmart()
+            }
             ssConnect.startVpn(model: server)
         }else if ssConnect.status == .connected {
             
@@ -281,6 +281,7 @@ extension HomeController {
                 navigationController?.pushViewController(vc, animated: true)
             }
             if status == .disconnect {
+                
                 timeLab.text = "00:00:00"
             }
         }

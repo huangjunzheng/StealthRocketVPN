@@ -73,19 +73,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                                 self.execAppCallback(isStart: true, error: nil)
                                 return
                             }
-//                            self.isTunnelConnected = true
-//                            TunnelInterface.setup(with: self.packetFlow)
-//                            TunnelInterface.setIsUdpForwardingEnabled(false)
-//                            TunnelInterface.startTun2Socks(Int32(9999))
-//                            DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
-//                                DispatchQueue.main.async {
-//                                    TunnelInterface.processPackets()
-//                                }
-//                            }
-                            
-                            
-//                            Tun2socksStartSocks(self, model.ip, Int(model.port) ?? 9999)
-                            
+
                             Tun2socksStartSocks(self, "127.0.0.1", 9999)
                             self.isTunnelConnected = true
                             DispatchQueue.main.asyncAfter(deadline: .now()+0.5) {
