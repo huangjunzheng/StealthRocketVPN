@@ -36,6 +36,7 @@ class HomeController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        updateUI()
         HomeAdMob.shared.show(vc: self) { isSuccess in
             
             if !isSuccess {
@@ -175,6 +176,10 @@ extension HomeController: MFMailComposeViewControllerDelegate {
     @objc func serverBtn() {
         
         let serverVC = ServerController()
+        serverVC.didSelect = { [weak self] in
+            
+            self?.connectView.connectBtn.sendActions(for: .touchUpInside)
+        }
         navigationController?.pushViewController(serverVC, animated: true)
     }
     
@@ -204,6 +209,10 @@ extension HomeController: MFMailComposeViewControllerDelegate {
             self.updateUI()
             
             let vc = ConnectStatusController()
+            vc.didSelectSmart = { [weak self] in
+                
+                self?.connectView.connectBtn.sendActions(for: .touchUpInside)
+            }
             self.navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -265,7 +274,14 @@ extension HomeController {
                 
                 updateUI()
                 let vc = ConnectStatusController()
-                self.navigationController?.pushViewController(vc, animated: true)
+                vc.didSelectSmart = { [weak self] in
+                    
+                    self?.connectView.connectBtn.sendActions(for: .touchUpInside)
+                }
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            if status == .disconnect {
+                timeLab.text = "00:00:00"
             }
         }
     }

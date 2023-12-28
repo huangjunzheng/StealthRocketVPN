@@ -21,6 +21,8 @@ class ConnectStatusController: UIViewController {
     
     let name = UILabel()
     
+    var didSelectSmart: (() -> Void)?
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -181,6 +183,19 @@ class ConnectStatusController: UIViewController {
     
     @objc func fastBtnClick() {
         
+        if GlobalParameters.shared.smartArr.count > 0 {
+            
+            let model = GlobalParameters.shared.serverArr.first
+            let smartModel = ServerModel()
+            smartModel.ste_pisi = model?.ste_pisi ?? ""
+            smartModel.ste_tude = model?.ste_tude ?? ""
+            smartModel.ste_vagm = model?.ste_vagm ?? ""
+            smartModel.ste_bili = "Super Fast Servers"
+            smartModel.ste_dicics = "Super Fast Servers"
+            smartModel.ste_home = GlobalParameters.shared.smartArr.first ?? ""
+            GlobalParameters.shared.selectServer = smartModel
+        }
+        didSelectSmart?()
         navigationController?.popViewController(animated: true)
     }
     

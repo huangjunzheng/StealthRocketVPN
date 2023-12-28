@@ -84,7 +84,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 //                            }
                             
                             
-                            
+//                            Tun2socksStartSocks(self, model.ip, Int(model.port) ?? 9999)
                             
                             Tun2socksStartSocks(self, "127.0.0.1", 9999)
                             self.isTunnelConnected = true
@@ -112,12 +112,12 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
         
         NSLog("extentsion - stopTunnel")
+        wormhole.passMessageObject(NSDictionary(dictionary: ["VPNState" : 0]), identifier: VPNStateNotify)
         stopCompletion = completionHandler
         ss.stop { [weak self] in
             
             self?.cancelTunnelWithError(nil)
             self?.execAppCallback(isStart: false, error: nil)
-            self?.wormhole.passMessageObject(NSDictionary(dictionary: ["VPNState" : 0]), identifier: VPNStateNotify)
         }
     }
 }
