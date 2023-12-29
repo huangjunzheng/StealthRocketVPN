@@ -36,6 +36,10 @@ class InterstitialAdMob: NSObject {
     
     func requestAd(complete: ((Bool) -> Void)?) {
         
+        if isEffective() {
+            complete?(true)
+            return
+        }
         print("[AD] - 插屏广告, 请求广告")
         GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910", request: nil) { [weak self] ad, err in
             
@@ -136,8 +140,16 @@ extension InterstitialAdMob: GADFullScreenContentDelegate {
         didShowComplete = nil
     }
     
+    func adWillDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
+        
+        print("[AD] - 插屏广告, 广告关闭")
+        clearCache()
+        requestAd(complete: nil)
+    }
+    
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         
+        print("[AD] - 插屏广告, 广告关闭")
         clearCache()
         requestAd(complete: nil)
     }

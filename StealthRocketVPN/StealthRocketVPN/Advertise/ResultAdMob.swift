@@ -39,6 +39,10 @@ class ResultAdMob: NSObject {
     
     func requestAd(complete: ((Bool) -> Void)?) {
         
+        if isEffective() {
+            complete?(true)
+            return
+        }
         print("[AD] - 结果原生, 请求广告")
         loadComplete = complete
         loader = GADAdLoader(adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: nil, adTypes: [.native], options: nil)

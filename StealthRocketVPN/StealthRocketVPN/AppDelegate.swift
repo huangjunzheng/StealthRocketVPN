@@ -88,13 +88,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     
                     // 请求广告
                     HomeAdMob.shared.requestAd(complete: nil)
-                    if !ResultAdMob.shared.isEffective() {
-                        ResultAdMob.shared.requestAd(complete: nil)
-                    }
+                    ResultAdMob.shared.requestAd(complete: nil)
                     InterstitialAdMob.shared.requestAd(complete: nil)
                     if OpenAdMob.shared.isEffective() {
                         
-                        NotificationCenter.default.post(name: OpenLodingProgressDidChangeKey, object: nil, userInfo: ["progress": 1] as [String:Float])
+                        NotificationCenter.default.post(name: OpenLodingProgressDidChangeKey, object: nil, userInfo: ["progress": 0.5] as [String:Float])
+                        DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+                            
+                            NotificationCenter.default.post(name: OpenLodingProgressDidChangeKey, object: nil, userInfo: ["progress": 1] as [String:Float])
+                        }
                     }else {
                         
                         NotificationCenter.default.post(name: OpenLodingProgressDidChangeKey, object: nil, userInfo: ["progress": 0.5] as [String:Float])

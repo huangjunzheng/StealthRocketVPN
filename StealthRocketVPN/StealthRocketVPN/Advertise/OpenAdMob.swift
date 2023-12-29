@@ -35,6 +35,10 @@ class OpenAdMob: NSObject {
     
     func requestAd(complete: ((Bool) -> Void)?) {
         
+        if isEffective() {
+            complete?(true)
+            return
+        }
         print("[AD] - Open, 请求广告")
 //        ca-app-pub-3940256099942544/5575463023
         GADAppOpenAd.load(withAdUnitID: "ca-app-pub-3940256099942544/5575463023", request: nil) { [weak self] ad, err in

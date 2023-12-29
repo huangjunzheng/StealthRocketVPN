@@ -39,6 +39,10 @@ class HomeAdMob: NSObject {
     
     func requestAd(complete: ((Bool) -> Void)?) {
         
+        if isEffective() {
+            complete?(true)
+            return
+        }
         print("[AD] - 首页原生, 请求广告")
 //        ca-app-pub-3940256099942544/3986624511
         loadComplete = complete
