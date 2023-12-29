@@ -29,9 +29,6 @@ class HomeController: UIViewController {
     
     let ssConnect = SSConnect.shared
     
-    // 是否已经完成插屏广告
-    var didShowInterstitialAd = false
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -181,7 +178,6 @@ extension HomeController: MFMailComposeViewControllerDelegate {
     
     @objc func connectBtn() {
         
-        didShowInterstitialAd = false
         if ssConnect.status == .disconnect {
             
             // 连接vpn
@@ -199,22 +195,6 @@ extension HomeController: MFMailComposeViewControllerDelegate {
         updateUI()
         // 请求结果页广告
         ResultAdMob.shared.requestAd(complete: nil)
-        // 展示插屏广告
-        InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
-            
-            self?.didShowInterstitialAd = true
-            guard let self = self,
-                  self.ssConnect.status != .processing else { return }
-            
-            self.updateUI()
-            
-            let vc = ConnectStatusController()
-            vc.didSelectSmart = { [weak self] in
-                
-                self?.connectView.connectBtn.sendActions(for: .touchUpInside)
-            }
-            self.navigationController?.pushViewController(vc, animated: true)
-        }
     }
     
     @objc func setttingContact() {
@@ -269,16 +249,21 @@ extension HomeController {
         if let data = sender.userInfo?["status"] as? Int,
            let status = VPNConnectStatus(rawValue: data) {
             
-            // 插屏广告已经显示，可以显示按钮状态
-            if didShowInterstitialAd && status != .processing {
+            if status != .processing {
                 
                 updateUI()
-                let vc = ConnectStatusController()
-                vc.didSelectSmart = { [weak self] in
+                // 展示插屏广告
+                InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
                     
-                    self?.connectView.connectBtn.sendActions(for: .touchUpInside)
+                    guard let self = self else { return }
+                    
+                    let vc = ConnectStatusController()
+                    vc.didSelectSmart = { [weak self] in
+                        
+                        self?.connectView.connectBtn.sendActions(for: .touchUpInside)
+                    }
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
-                navigationController?.pushViewController(vc, animated: true)
             }
             if status == .disconnect {
                 

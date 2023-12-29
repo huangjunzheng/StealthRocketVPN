@@ -32,16 +32,21 @@ class SSConnect: NSObject {
         
     func setupConfig() {
         
-        let vpnStatus = tunnel.connection.status
-        if vpnStatus == .connected {
-            status = .connected
-        }else if vpnStatus == .connecting || vpnStatus == .reasserting || vpnStatus == .disconnecting {
-            status = .processing
-        }else {
-            status = .disconnect
+        tunnel.loadFromPreferences { error in
+            
+            if error != nil {
+                return
+            }
+            let vpnStatus = self.tunnel.connection.status
+            if vpnStatus == .connected {
+                self.status = .connected
+            }else if vpnStatus == .connecting || vpnStatus == .reasserting || vpnStatus == .disconnecting {
+                self.status = .processing
+            }else {
+                self.status = .disconnect
+            }
+            NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": self.status.rawValue])
         }
-        NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
-        
         NotificationCenter.default.addObserver(self, selector: #selector(onBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(become), name: UIApplication.willEnterForegroundNotification, object: nil)
         
