@@ -150,7 +150,7 @@ class SSConnect: NSObject {
     
     func connectFailed() {
         
-        status = .disconnect
+        status = .faild
         connectModel = nil
         stopTimer()
         NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])

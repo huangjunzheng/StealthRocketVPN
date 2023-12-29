@@ -66,6 +66,7 @@
 		E5D51FE92B345C74004FBB84 /* ServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FE82B345C74004FBB84 /* ServerController.swift */; };
 		E5D51FEB2B345FB0004FBB84 /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FEA2B345FB0004FBB84 /* ServerCell.swift */; };
 		E5D51FED2B3467F0004FBB84 /* HomeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FEC2B3467F0004FBB84 /* HomeSettingView.swift */; };
+		E5E4B28D2B3ED283001DE9ED /* ipinfoKit in Frameworks */ = {isa = PBXBuildFile; productRef = E5E4B28C2B3ED283001DE9ED /* ipinfoKit */; };
 		E5F911372B3EA1D200184921 /* Tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F911362B3EA1D200184921 /* Tun2socks.xcframework */; };
 /* End PBXBuildFile section */
 
@@ -155,6 +156,7 @@
 			files = (
 				E53E0BB92B35747D001E2529 /* FirebaseMessaging in Frameworks */,
 				E5D51FE22B34110F004FBB84 /* GoogleMobileAds in Frameworks */,
+				E5E4B28D2B3ED283001DE9ED /* ipinfoKit in Frameworks */,
 				E53E0BAB2B35747D001E2529 /* FirebaseFirestoreSwift in Frameworks */,
 				E53E0B952B35747D001E2529 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				E53E0BAD2B35747D001E2529 /* FirebaseFunctions in Frameworks */,
@@ -439,6 +441,7 @@
 				E53E0BBE2B35747D001E2529 /* FirebaseRemoteConfigSwift */,
 				E53E0BC02B35747D001E2529 /* FirebaseStorage */,
 				E53E0BC22B35747D001E2529 /* FirebaseStorageCombine-Community */,
+				E5E4B28C2B3ED283001DE9ED /* ipinfoKit */,
 			);
 			productName = StealthRocketVPN;
 			productReference = E5C0E34A2B331DBC0060CF4F /* StealthRocketVPN.app */;
@@ -475,6 +478,7 @@
 			packageReferences = (
 				E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 				E53E0B8D2B35747D001E2529 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E5E4B28B2B3ED283001DE9ED /* XCRemoteSwiftPackageReference "swift" */,
 			);
 			productRefGroup = E5C0E34B2B331DBC0060CF4F /* Products */;
 			projectDirPath = "";
@@ -988,6 +992,14 @@
 				minimumVersion = 10.14.0;
 			};
 		};
+		E5E4B28B2B3ED283001DE9ED /* XCRemoteSwiftPackageReference "swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ipinfo/swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1130,6 +1142,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E5D51FE02B34110F004FBB84 /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
 			productName = GoogleMobileAds;
+		};
+		E5E4B28C2B3ED283001DE9ED /* ipinfoKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E5E4B28B2B3ED283001DE9ED /* XCRemoteSwiftPackageReference "swift" */;
+			productName = ipinfoKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

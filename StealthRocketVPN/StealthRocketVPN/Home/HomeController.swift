@@ -177,7 +177,7 @@ extension HomeController: MFMailComposeViewControllerDelegate {
     
     @objc func connectBtn() {
         
-        if ssConnect.status == .disconnect {
+        if ssConnect.status == .disconnect || ssConnect.status == .faild {
             
             if AFNetworkReachabilityManager.shared().networkReachabilityStatus == .notReachable || AFNetworkReachabilityManager.shared().networkReachabilityStatus == .unknown {
                 
@@ -258,8 +258,9 @@ extension HomeController {
            let status = VPNConnectStatus(rawValue: data) {
             
             view.isUserInteractionEnabled = false
-            if status != .processing {
-                
+            
+            switch status {
+            case .connected, .disconnect:
                 updateUI()
                 // 展示插屏广告
                 InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
@@ -273,10 +274,14 @@ extension HomeController {
                     }
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
-            }
-            if status == .disconnect {
-                
-                timeLab.text = "00:00:00"
+                if status == .disconnect {
+                    
+                    timeLab.text = "00:00:00"
+                }
+            case .faild:
+                view.isUserInteractionEnabled = true
+                updateUI()
+            default: break
             }
         }
     }

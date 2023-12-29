@@ -94,7 +94,7 @@ class HomeConnectView: UIView {
             startContectingAnimation()
             connectBtn.isEnabled = false
             
-        case .disconnect:
+        case .disconnect, .faild:
             stopContectingAnimation()
             titleLab.text = "Contect"
             titleLab.textColor = .white

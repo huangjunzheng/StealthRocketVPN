@@ -4,6 +4,8 @@
 <dict>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-5663304938951743~8639742035</string>
+	<key>IPInfoKitAccessToken</key>
+	<string>479b486dbb05e5</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

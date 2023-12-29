@@ -19,6 +19,7 @@ enum VPNConnectStatus: Int {
     case connected = 1
     case processing = 2
     case disconnect = 3
+    case faild = 4
 }
 
 
