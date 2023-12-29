@@ -81,14 +81,14 @@ class FirebaseConfig: NSObject {
                 globalParameters.serverList = cacheArr
                 let smart = ServerModel()
                 smart.ste_bili = "smart"
-                globalParameters.serverList.append(smart)
+                globalParameters.serverList.insert(smart, at: 0)
             }
             return
         }
         globalParameters.serverList = arr
         let smart = ServerModel()
         smart.ste_bili = "smart"
-        globalParameters.serverList.append(smart)
+        globalParameters.serverList.insert(smart, at: 0)
         UserDefaults.standard.set(json, forKey: CacheRemoteServerkey)
     }
 }

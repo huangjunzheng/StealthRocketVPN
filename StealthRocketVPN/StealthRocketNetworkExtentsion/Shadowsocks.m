@@ -112,7 +112,8 @@ void shadowsocksCallback(int socks_fd, int udp_fd, void *udata) {
     const profile_t profile = {
         .remote_host = host,
         .local_addr = "127.0.0.1",
-        .method = method,
+//        .method = method,
+        .method = "chacha20-ietf-poly1305",
         .password = password,
         .remote_port = port,
         .local_port = 9999,

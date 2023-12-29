@@ -184,7 +184,7 @@ class ConnectStatusController: UIViewController {
     
     @objc func backBtn() {
         
-        navigationController?.popViewController(animated: true)
+        navigationController?.popToRootViewController(animated: true)
     }
     
     @objc func fastBtnClick() {

@@ -91,10 +91,6 @@ extension ServerController: UITableViewDelegate, UITableViewDataSource {
         
         GlobalParameters.shared.currentServer = serverList[indexPath.row]
         didSelect?()
-        // 展示插屏广告
-        InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
-            
-            self?.navigationController?.popViewController(animated: true)
-        }
+        navigationController?.popViewController(animated: true)
     }
 }
