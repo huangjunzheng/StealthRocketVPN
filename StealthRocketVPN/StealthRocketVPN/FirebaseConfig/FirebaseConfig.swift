@@ -75,8 +75,13 @@ class FirebaseConfig: NSObject {
         guard let json = config.configValue(forKey: "ste").jsonValue,
               let arr = NSArray.yy_modelArray(with: ServerModel.self, json: json) as? [ServerModel] else {
             
-            if let cacheArr = UserDefaults.standard.array(forKey: CacheRemoteServerkey) as? [ServerModel] {
+            if let cacheJson = UserDefaults.standard.value(forKey: CacheRemoteServerkey),
+               let cacheArr = NSArray.yy_modelArray(with: ServerModel.self, json: cacheJson) as? [ServerModel] {
+                
                 globalParameters.serverList = cacheArr
+                let smart = ServerModel()
+                smart.ste_bili = "smart"
+                globalParameters.serverList.append(smart)
             }
             return
         }
@@ -84,6 +89,6 @@ class FirebaseConfig: NSObject {
         let smart = ServerModel()
         smart.ste_bili = "smart"
         globalParameters.serverList.append(smart)
-        UserDefaults.standard.set(arr, forKey: CacheRemoteServerkey)
+        UserDefaults.standard.set(json, forKey: CacheRemoteServerkey)
     }
 }

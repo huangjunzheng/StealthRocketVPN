@@ -45,8 +45,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         AFNetworkReachabilityManager.shared().setReachabilityStatusChange { status in
             
+            if SSConnect.shared.status == .processing { return }
+            
             if status == .reachableViaWWAN || status == .reachableViaWiFi {
-                
+                                
                 NotificationCenter.default.post(name: OpenLodingProgressDidChangeKey, object: nil, userInfo: ["progress": 0.25] as [String:Float])
                 
                 FirebaseConfig.shared.fetchConfig { finish in

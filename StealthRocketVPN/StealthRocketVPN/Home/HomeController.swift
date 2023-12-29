@@ -58,7 +58,6 @@ class HomeController: UIViewController {
             }
         }
         
-        // 如果无网络则推出app
         if AFNetworkReachabilityManager.shared().networkReachabilityStatus == .notReachable || AFNetworkReachabilityManager.shared().networkReachabilityStatus == .unknown {
             
             let alertController = UIAlertController(title: nil, message: "Network request timed out. Please make sure your network is connected", preferredStyle: .alert)
@@ -180,6 +179,15 @@ extension HomeController: MFMailComposeViewControllerDelegate {
         
         if ssConnect.status == .disconnect {
             
+            if AFNetworkReachabilityManager.shared().networkReachabilityStatus == .notReachable || AFNetworkReachabilityManager.shared().networkReachabilityStatus == .unknown {
+                
+                let alertController = UIAlertController(title: nil, message: "Network request timed out. Please make sure your network is connected", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alertController.addAction(okAction)
+                present(alertController, animated: true, completion: nil)
+                return
+            }
+            
             // 连接vpn
             var server = GlobalParameters.shared.currentServer
             if GlobalParameters.shared.currentServer.ste_bili == "smart" {
@@ -268,6 +276,13 @@ extension HomeController {
             if status == .disconnect {
                 
                 timeLab.text = "00:00:00"
+                view.isUserInteractionEnabled = true
+            }else if status == .processing {
+                
+                view.isUserInteractionEnabled = false
+            }else {
+                
+                view.isUserInteractionEnabled = true
             }
         }
     }

@@ -38,6 +38,8 @@ class HomeAdMob: NSObject {
     }
     
     func requestAd(complete: ((Bool) -> Void)?) {
+        
+        print("[AD] - 首页原生, 请求广告")
 //        ca-app-pub-3940256099942544/3986624511
         loadComplete = complete
         loader = GADAdLoader(adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: nil, adTypes: [.native], options: nil)
@@ -46,6 +48,7 @@ class HomeAdMob: NSObject {
             loader.delegate = self
             loader.load(nil)
         }else {
+            print("[AD] - 首页原生, 请求失败")
             complete?(false)
         }
     }
@@ -63,6 +66,7 @@ class HomeAdMob: NSObject {
             }
             complete?(true)
         }else {
+            print("[AD] - 首页原生, 展示失败")
             complete?(false)
         }
     }
@@ -93,6 +97,7 @@ extension HomeAdMob: GADNativeAdLoaderDelegate {
     
     func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADNativeAd) {
         
+        print("[AD] - 首页原生, 请求成功")
         cacheAd = nativeAd
         loadADDate = Date()
         loadComplete?(true)
@@ -100,6 +105,7 @@ extension HomeAdMob: GADNativeAdLoaderDelegate {
     
     func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: Error) {
         
+        print("[AD] - 首页原生, 请求失败")
         clearCache()
         loadComplete?(false)
     }
@@ -111,6 +117,7 @@ extension HomeAdMob: GADNativeAdDelegate {
     
     func nativeAdDidRecordImpression(_ nativeAd: GADNativeAd) {
         
+        print("[AD] - Home, 展示成功")
         isShowing = true
         clearCache()
         requestAd(complete: nil)

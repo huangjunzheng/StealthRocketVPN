@@ -36,16 +36,19 @@ class InterstitialAdMob: NSObject {
     
     func requestAd(complete: ((Bool) -> Void)?) {
         
+        print("[AD] - 插屏广告, 请求广告")
         GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910", request: nil) { [weak self] ad, err in
             
             guard let self = self,
                   err == nil else {
                 self?.clearCache()
+                print("[AD] - 插屏广告, 请求失败")
                 complete?(false)
                 return
             }
             self.cacheAd = ad
             self.loadADDate = Date()
+            print("[AD] - 插屏广告, 请求成功")
             complete?(true)
         }
     }
@@ -119,6 +122,7 @@ extension InterstitialAdMob: GADFullScreenContentDelegate {
     
     func adDidRecordImpression(_ ad: GADFullScreenPresentingAd) {
         
+        print("[AD] - 插屏广告, 展示成功")
         clearCache()
         didShowComplete?(true)
         didShowComplete = nil
@@ -126,6 +130,7 @@ extension InterstitialAdMob: GADFullScreenContentDelegate {
     
     func ad(_ ad: GADFullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         
+        print("[AD] - 插屏广告, 展示失败")
         clearCache()
         didShowComplete?(false)
         didShowComplete = nil

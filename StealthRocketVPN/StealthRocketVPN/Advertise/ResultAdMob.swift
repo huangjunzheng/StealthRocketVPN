@@ -39,6 +39,7 @@ class ResultAdMob: NSObject {
     
     func requestAd(complete: ((Bool) -> Void)?) {
         
+        print("[AD] - 结果原生, 请求广告")
         loadComplete = complete
         loader = GADAdLoader(adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: nil, adTypes: [.native], options: nil)
         if let loader = loader,
@@ -46,6 +47,7 @@ class ResultAdMob: NSObject {
             loader.delegate = self
             loader.load(nil)
         }else {
+            print("[AD] - 结果原生, 请求失败")
             complete?(false)
         }
     }
@@ -63,6 +65,7 @@ class ResultAdMob: NSObject {
             }
             complete?(true)
         }else {
+            print("[AD] - 结果原生, 展示失败")
             complete?(false)
         }
     }
@@ -94,6 +97,7 @@ extension ResultAdMob: GADNativeAdLoaderDelegate {
     
     func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADNativeAd) {
         
+        print("[AD] - 结果原生, 请求成功")
         cacheAd = nativeAd
         loadADDate = Date()
         loadComplete?(true)
@@ -101,6 +105,7 @@ extension ResultAdMob: GADNativeAdLoaderDelegate {
     
     func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: Error) {
         
+        print("[AD] - 结果原生, 请求失败")
         clearCache()
         loadComplete?(false)
     }
@@ -112,6 +117,7 @@ extension ResultAdMob: GADNativeAdDelegate {
     
     func nativeAdDidRecordImpression(_ nativeAd: GADNativeAd) {
         
+        print("[AD] - 结果原生, 展示成功")
         isShowing = true
         clearCache()
         requestAd(complete: nil)
