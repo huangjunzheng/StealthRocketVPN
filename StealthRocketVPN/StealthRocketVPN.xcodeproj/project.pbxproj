@@ -44,12 +44,6 @@
 		E553DA0D2B3AA3F00091F4CE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA0C2B3AA3F00091F4CE /* NetworkExtension.framework */; };
 		E553DA102B3AA3F00091F4CE /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA0F2B3AA3F00091F4CE /* PacketTunnelProvider.swift */; };
 		E553DA152B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = E553DA0B2B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		E553DA252B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA242B3AA65B0091F4CE /* Tun2socks.framework */; };
-		E553DA262B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA242B3AA65B0091F4CE /* Tun2socks.framework */; };
-		E553DA2B2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */; };
-		E553DA2C2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */; };
-		E553DA322B3AAAF40091F4CE /* Shadowsocks.m in Sources */ = {isa = PBXBuildFile; fileRef = E553DA312B3AAAF40091F4CE /* Shadowsocks.m */; };
-		E553DA382B3AB08A0091F4CE /* ConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E553DA372B3AB08A0091F4CE /* ConnectModel.m */; };
 		E553DA3B2B3AF4D80091F4CE /* SSConnect.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA3A2B3AF4D80091F4CE /* SSConnect.swift */; };
 		E553DA3D2B3BF0520091F4CE /* HomeAdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = E553DA3C2B3BF0520091F4CE /* HomeAdMob.swift */; };
 		E553DA3F2B3BF15B0091F4CE /* HomeAdView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E553DA3E2B3BF15B0091F4CE /* HomeAdView.xib */; };
@@ -72,6 +66,7 @@
 		E5D51FE92B345C74004FBB84 /* ServerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FE82B345C74004FBB84 /* ServerController.swift */; };
 		E5D51FEB2B345FB0004FBB84 /* ServerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FEA2B345FB0004FBB84 /* ServerCell.swift */; };
 		E5D51FED2B3467F0004FBB84 /* HomeSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5D51FEC2B3467F0004FBB84 /* HomeSettingView.swift */; };
+		E5F911372B3EA1D200184921 /* Tun2socks.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5F911362B3EA1D200184921 /* Tun2socks.xcframework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,13 +111,6 @@
 		E553DA112B3AA3F00091F4CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E553DA122B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StealthRocketNetworkExtentsion.entitlements; sourceTree = "<group>"; };
 		E553DA1A2B3AA5940091F4CE /* StealthRocketVPN.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = StealthRocketVPN.entitlements; sourceTree = "<group>"; };
-		E553DA242B3AA65B0091F4CE /* Tun2socks.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Tun2socks.framework; sourceTree = "<group>"; };
-		E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Shadowsocks_iOS.framework; sourceTree = "<group>"; };
-		E553DA2F2B3AAAF40091F4CE /* StealthRocketNetworkExtentsion-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "StealthRocketNetworkExtentsion-Bridging-Header.h"; sourceTree = "<group>"; };
-		E553DA302B3AAAF40091F4CE /* Shadowsocks.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Shadowsocks.h; sourceTree = "<group>"; };
-		E553DA312B3AAAF40091F4CE /* Shadowsocks.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Shadowsocks.m; sourceTree = "<group>"; };
-		E553DA362B3AB08A0091F4CE /* ConnectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConnectModel.h; sourceTree = "<group>"; };
-		E553DA372B3AB08A0091F4CE /* ConnectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectModel.m; sourceTree = "<group>"; };
 		E553DA3A2B3AF4D80091F4CE /* SSConnect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSConnect.swift; sourceTree = "<group>"; };
 		E553DA3C2B3BF0520091F4CE /* HomeAdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdMob.swift; sourceTree = "<group>"; };
 		E553DA3E2B3BF15B0091F4CE /* HomeAdView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeAdView.xib; sourceTree = "<group>"; };
@@ -146,6 +134,8 @@
 		E5D51FE82B345C74004FBB84 /* ServerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerController.swift; sourceTree = "<group>"; };
 		E5D51FEA2B345FB0004FBB84 /* ServerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServerCell.swift; sourceTree = "<group>"; };
 		E5D51FEC2B3467F0004FBB84 /* HomeSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSettingView.swift; sourceTree = "<group>"; };
+		E5F911362B3EA1D200184921 /* Tun2socks.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = Tun2socks.xcframework; sourceTree = "<group>"; };
+		E5F911382B3EB48C00184921 /* StealthRocketNetworkExtentsion-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "StealthRocketNetworkExtentsion-Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,8 +143,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E553DA2C2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */,
-				E553DA262B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */,
+				E5F911372B3EA1D200184921 /* Tun2socks.xcframework in Frameworks */,
 				E553DA0D2B3AA3F00091F4CE /* NetworkExtension.framework in Frameworks */,
 				C0B5AFFC062E27CBE642AF64 /* Pods_StealthRocketNetworkExtentsion.framework in Frameworks */,
 			);
@@ -171,11 +160,9 @@
 				E53E0BAD2B35747D001E2529 /* FirebaseFunctions in Frameworks */,
 				CABEDD1A300C76E3C49D6E73 /* Pods_StealthRocketVPN.framework in Frameworks */,
 				E53E0B8F2B35747D001E2529 /* FirebaseAnalytics in Frameworks */,
-				E553DA2B2B3AA6810091F4CE /* Shadowsocks_iOS.framework in Frameworks */,
 				E53E0B9B2B35747D001E2529 /* FirebaseAuth in Frameworks */,
 				E53E0BA52B35747D001E2529 /* FirebaseDynamicLinks in Frameworks */,
 				E53E0B9F2B35747D001E2529 /* FirebaseCrashlytics in Frameworks */,
-				E553DA252B3AA65B0091F4CE /* Tun2socks.framework in Frameworks */,
 				E53E0BB72B35747D001E2529 /* FirebaseMLModelDownloader in Frameworks */,
 				E53E0BA32B35747D001E2529 /* FirebaseDatabaseSwift in Frameworks */,
 				E53E0BA72B35747D001E2529 /* FirebaseFirestore in Frameworks */,
@@ -249,8 +236,7 @@
 		E53E0BD12B3A9F02001E2529 /* SSLib */ = {
 			isa = PBXGroup;
 			children = (
-				E553DA2A2B3AA6810091F4CE /* Shadowsocks_iOS.framework */,
-				E553DA242B3AA65B0091F4CE /* Tun2socks.framework */,
+				E5F911362B3EA1D200184921 /* Tun2socks.xcframework */,
 			);
 			path = SSLib;
 			sourceTree = "<group>";
@@ -260,12 +246,8 @@
 			children = (
 				E553DA0F2B3AA3F00091F4CE /* PacketTunnelProvider.swift */,
 				E553DA112B3AA3F00091F4CE /* Info.plist */,
+				E5F911382B3EB48C00184921 /* StealthRocketNetworkExtentsion-Bridging-Header.h */,
 				E553DA122B3AA3F00091F4CE /* StealthRocketNetworkExtentsion.entitlements */,
-				E553DA302B3AAAF40091F4CE /* Shadowsocks.h */,
-				E553DA312B3AAAF40091F4CE /* Shadowsocks.m */,
-				E553DA2F2B3AAAF40091F4CE /* StealthRocketNetworkExtentsion-Bridging-Header.h */,
-				E553DA362B3AB08A0091F4CE /* ConnectModel.h */,
-				E553DA372B3AB08A0091F4CE /* ConnectModel.m */,
 			);
 			path = StealthRocketNetworkExtentsion;
 			sourceTree = "<group>";
@@ -596,8 +578,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E553DA102B3AA3F00091F4CE /* PacketTunnelProvider.swift in Sources */,
-				E553DA322B3AAAF40091F4CE /* Shadowsocks.m in Sources */,
-				E553DA382B3AB08A0091F4CE /* ConnectModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
