@@ -73,8 +73,11 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
                     config.port = Int(port) ?? 0
                     config.password = password
                     config.cipherName = cipherName
-                    guard let client = ShadowsocksNewClient(config, nil) else { return }
-                    tunnel = Tun2socksConnectShadowsocksTunnel(self, client, false, nil)
+                    guard let client = ShadowsocksNewClient(config, nil) else {
+                        self.execAppCallback(isStart: true, error: nil)
+                        return
+                    }
+                    self.tunnel = Tun2socksConnectShadowsocksTunnel(self, client, false, nil)
                     packetQueue.async { [weak self] in
                                         
                         self?.processPackets()
@@ -92,6 +95,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         wormhole.passMessageObject(NSDictionary(dictionary: ["VPNState" : 0]), identifier: VPNStateNotify)
         self.tunnel?.disconnect()
         stopCompletion = completionHandler
+        execAppCallback(isStart: false, error: nil)
     }
     
     func processPackets() {

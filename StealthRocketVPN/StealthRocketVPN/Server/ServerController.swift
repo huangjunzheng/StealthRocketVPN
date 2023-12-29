@@ -51,8 +51,14 @@ class ServerController: UIViewController, UIGestureRecognizerDelegate {
         }
         
         let currentServer = GlobalParameters.shared.currentServer
-        let index = GlobalParameters.shared.serverList.firstIndex(of: currentServer) ?? 0
-        tabbleView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .none)
+        if currentServer.ste_bili == "smart" {
+            
+            tabbleView.selectRow(at: IndexPath(row: 0, section: 0), animated: true, scrollPosition: .none)
+        }else {
+            
+            let index = GlobalParameters.shared.serverList.firstIndex(where: { $0.ste_home == currentServer.ste_home }) ?? 0
+            tabbleView.selectRow(at: IndexPath(row: index, section: 0), animated: true, scrollPosition: .none)
+        }
     }
     
     @objc func backBtn() {
