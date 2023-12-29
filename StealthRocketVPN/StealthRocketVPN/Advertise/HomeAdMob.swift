@@ -43,12 +43,12 @@ class HomeAdMob: NSObject {
             complete?(true)
             return
         }
-        print("[AD] - 首页原生, 请求广告")
 //        ca-app-pub-3940256099942544/3986624511
         loadComplete = complete
         loader = GADAdLoader(adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: nil, adTypes: [.native], options: nil)
         if let loader = loader,
            loader.isLoading == false {
+            print("[AD] - 首页原生, 请求广告")
             loader.delegate = self
             loader.load(nil)
         }else {

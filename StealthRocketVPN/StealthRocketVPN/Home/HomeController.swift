@@ -257,6 +257,7 @@ extension HomeController {
         if let data = sender.userInfo?["status"] as? Int,
            let status = VPNConnectStatus(rawValue: data) {
             
+            view.isUserInteractionEnabled = false
             if status != .processing {
                 
                 updateUI()
@@ -264,7 +265,7 @@ extension HomeController {
                 InterstitialAdMob.shared.show(vc: self) { [weak self] isSuccess in
                     
                     guard let self = self else { return }
-                    
+                    self.view.isUserInteractionEnabled = true
                     let vc = ConnectStatusController()
                     vc.didSelectSmart = { [weak self] in
                         
@@ -276,13 +277,6 @@ extension HomeController {
             if status == .disconnect {
                 
                 timeLab.text = "00:00:00"
-                view.isUserInteractionEnabled = true
-            }else if status == .processing {
-                
-                view.isUserInteractionEnabled = false
-            }else {
-                
-                view.isUserInteractionEnabled = true
             }
         }
     }
