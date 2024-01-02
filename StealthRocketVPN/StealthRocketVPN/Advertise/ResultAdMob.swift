@@ -44,7 +44,7 @@ class ResultAdMob: NSObject {
             return
         }
         loadComplete = complete
-        loader = GADAdLoader(adUnitID: "ca-app-pub-3940256099942544/3986624511", rootViewController: nil, adTypes: [.native], options: nil)
+        loader = GADAdLoader(adUnitID: GlobalParameters.shared.dormieAdId, rootViewController: nil, adTypes: [.native], options: nil)
         if let loader = loader,
            loader.isLoading == false {
             print("[AD] - 结果原生, 请求广告")

@@ -32,7 +32,7 @@ class SSConnect: NSObject {
         
     func setupConfig() {
         
-        tunnel.loadFromPreferences { error in
+        setTunnelProvider { error in
             
             if error != nil {
                 return
@@ -40,14 +40,15 @@ class SSConnect: NSObject {
             let vpnStatus = self.tunnel.connection.status
             if vpnStatus == .connected {
                 self.status = .connected
+                self.become()
+                NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": self.status.rawValue])
             }else if vpnStatus == .connecting || vpnStatus == .reasserting || vpnStatus == .disconnecting {
                 self.status = .processing
             }else {
                 self.status = .disconnect
             }
-            NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": self.status.rawValue])
         }
-        NotificationCenter.default.addObserver(self, selector: #selector(onBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(become), name: UIApplication.willEnterForegroundNotification, object: nil)
         
         wormhole.listenForMessage(withIdentifier: "VPNStateNotify") { [weak self] data in
@@ -159,12 +160,14 @@ class SSConnect: NSObject {
     func connectDidSuccess() {
         
         status = .connected
-        tagTime = Date().timeIntervalSince1970
         connectDuration = 0
         openTimer()
         // 连接成功时缓存当前服务器
         GlobalParameters.shared.cacheDidConnectServer()
         NotificationCenter.default.post(name: SSConnectStatusDidChangeKey, object: nil, userInfo: ["status": status.rawValue])
+        
+        UserDefaults.standard.set(Date().timeIntervalSince1970, forKey: CacheConnectTagTimekey)
+        UserDefaults.standard.synchronize()
     }
     
     func connectDidStop() {
@@ -197,18 +200,13 @@ class SSConnect: NSObject {
         NotificationCenter.default.post(name: SSConnectDurationDidChangeKey, object: nil, userInfo: ["duration":connectDuration])
     }
 
-    @objc func onBackground() {
-
-        // 进入后台前，保存当前连接的时长
-        tagTime = NSDate().timeIntervalSince1970 - Double(connectDuration)
-        stopTimer()
-    }
-
     @objc func become() {
         
         // 返回app时，更新连接市场
         if status == .connected {
-            connectDuration = NSDate().timeIntervalSince1970 - (tagTime ?? 0)
+            if let tagTime = UserDefaults.standard.value(forKey: CacheConnectTagTimekey) as? Double {
+                connectDuration = NSDate().timeIntervalSince1970 - (tagTime)
+            }
             openTimer()
         }
     }

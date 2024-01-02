@@ -10,6 +10,8 @@ import AFNetworking
 import FirebaseCore
 import AppTrackingTransparency
 import AdSupport
+import FacebookCore
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        // facebook
+        ApplicationDelegate.shared.application(application, didFinishLaunchingWithOptions: launchOptions)
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = ["5462a3d848f1d2b19795bd410e4e276e"]
+                
         // 冷启动
         GlobalParameters.shared.isHotStart = false
         
@@ -41,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupConfig() {
         
         FirebaseApp.configure()
-        SSConnect.shared.setupConfig()
+        
 
         AFNetworkReachabilityManager.shared().setReachabilityStatusChange { status in
             

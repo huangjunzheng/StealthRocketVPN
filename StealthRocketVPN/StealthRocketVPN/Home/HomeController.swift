@@ -44,7 +44,7 @@ class HomeController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                        
         RestrictUse.shared.isRestrictUse { [weak self] canUse in
             
             if !canUse {
@@ -69,6 +69,9 @@ class HomeController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectStatusDidChange), name: SSConnectStatusDidChangeKey, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(SSConnectDurationDidChange), name: SSConnectDurationDidChangeKey, object: nil)
         setupView()
+        
+        SSConnect.shared.setupConfig()
+        
     }
     
     func setupView() {

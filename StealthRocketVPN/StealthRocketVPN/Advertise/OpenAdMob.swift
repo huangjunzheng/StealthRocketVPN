@@ -41,7 +41,8 @@ class OpenAdMob: NSObject {
         }
         print("[AD] - Open, 请求广告")
 //        ca-app-pub-3940256099942544/5575463023
-        GADAppOpenAd.load(withAdUnitID: "ca-app-pub-3940256099942544/5575463023", request: nil) { [weak self] ad, err in
+        
+        GADAppOpenAd.load(withAdUnitID: GlobalParameters.shared.tureAdId, request: nil) { [weak self] ad, err in
             
             guard let self = self else {
                 print("[AD] - Open, 请求失败")

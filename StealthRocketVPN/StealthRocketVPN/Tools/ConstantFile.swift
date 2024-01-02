@@ -12,7 +12,7 @@ let OpenLodingProgressDidChangeKey = NSNotification.Name(rawValue: "OpenLodingPr
 let SSConnectDurationDidChangeKey = NSNotification.Name(rawValue: "SSConnectDurationDidChangeKey")
 let SSConnectStatusDidChangeKey = NSNotification.Name(rawValue: "SSConnectStatusDidChangeKey")
 
-
+let ttte = NSNotification.Name(rawValue: "ttte")
 
 // Enum
 enum VPNConnectStatus: Int {
@@ -37,3 +37,4 @@ let CacheRemoteAdkey = "CacheRemoteAdkey"
 let CacheRemoteSmartkey = "CacheRemoteSmartkey"
 let CacheRemoteServerkey = "CacheRemoteServerkey"
 let CacheDidConnectServerkey = "CacheDidConnectServerkey"
+let CacheConnectTagTimekey = "CacheConnectTagTimekey"

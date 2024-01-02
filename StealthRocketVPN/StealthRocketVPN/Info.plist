@@ -2,6 +2,25 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb1419758215641713</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.stealth.rocket.secure.high.speed.link</string>
+		</dict>
+	</array>
+	<key>FacebookDisplayName</key>
+	<string>StealthRocket VPN</string>
+	<key>FacebookClientToken</key>
+	<string>e836e8a22a5a3cbfb40f7cd4098f4dc0</string>
+	<key>FacebookAppID</key>
+	<string>1419758215641713</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-5663304938951743~8639742035</string>
 	<key>IPInfoKitAccessToken</key>

@@ -41,7 +41,7 @@ class InterstitialAdMob: NSObject {
             return
         }
         print("[AD] - 插屏广告, 请求广告")
-        GADInterstitialAd.load(withAdUnitID: "ca-app-pub-3940256099942544/4411468910", request: nil) { [weak self] ad, err in
+        GADInterstitialAd.load(withAdUnitID: GlobalParameters.shared.taskAdId, request: nil) { [weak self] ad, err in
             
             guard let self = self,
                   err == nil else {
